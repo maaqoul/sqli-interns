@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/svg" href="Other/ico.svg">
+	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>Hello Kitty bot</title>
+</head>
+
+<body>
+	<header>
+		<nav>
+			<h1>Hello Kitty bot</h1>
+			<ul class="navbar">
+				<li><a href="Commands" target="_blank">Commands</a></li>
+				<li><a href="#">Discord server</a></li>
+				<li><a href="https://strix.moe/" target="_blank">WhoAmI</a></li>
+			</ul>
+			<button onclick="toggleMenu()" class="btn"><i class="fa fa-bars"></i></button>
+		</nav>
+	</header>
+	<main>
+		<section class="firstSection">
+			<img src="Other/Hello Kitty.png">
+			<h2>HELLO KITTY</h2>
+			<p>
+				Hello Kitty was born in the suburbs of London. She lives with her parents and her twin sister Mimmy who is her best friend. Her hobbies include baking cookies and making new friends. As she always says, "you can never have too many friends!"
+			</p>
+			<button onclick="window.open('https://discord.com/api/oauth2/authorize?client_id=1037041366292766780&permissions=8&scope=bot', '_blank')" class="addButton">ADD TO DISCORD</button>
+			<button onclick="seeFeatures()" class="addButton">SEE FEATURES</button>
+		</section>
+		<section id="scrollFeatures" class="secondSection">
+			<h3>Features</h3>
+			<ul class="features">
+				<li class="feature1">
+					<h4>Verification system</h4>
+					<div>Diter evil bots and only let legitimate users in!</div>
+				</li>
+				<li class="feature2">
+					<h4>Welcome message</h4>
+					<div>Welcome new members with a Hello Kitty gif and message!</div>
+				</li>
+				<li class="feature3">
+					<h4>Music player</h4>
+					<div>Play high quality music in your Discord server for free (only supports Youtube at the moment).</div>
+				</li>
+				<li class="feature4">
+					<h4>Leveling system</h4>
+					<div>Track your members activity based on their level and rank in server!</div>
+				</li>
+				<li class="feature5">
+					<h4>Easy to setup</h4>
+					<div>Easily setup and configure Hello Kitty bot in few seconds and only via commands!</div>
+				</li>
+				<li class="feature6">
+					<h4>100% free!</h4>
+					<div>Hello Kitty bot will always be 100% free including all the features above and the upcoming ones. (won't ask for donations either :3)</div>
+				</li>
+			</ul>
+		</section>
+	</main>
+	<footer>
+		By brahim @ SQLI :D
+	</footer>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="script.js"></script>
+</body>
+</html>
