@@ -15,7 +15,11 @@
 			
 			<label for="personal-email">Email: </label>
 			<input type="email" name="personal-email" id="personal-email" required>
-			
+		
+			<label for="phone">phone number: </label>
+			<input type="text" name="phone" id="phone" required pattern="^06\d{10}$"
+				oninvalid="setCustomValidity('Set the phone number to 10 numbers and start with 06')">
+
 			<label for="birthDay">Your birthday</label>
 			<input type="date" name="birthDay" id="birthDay" required>
 		</div>
