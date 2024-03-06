@@ -17,7 +17,7 @@
 			<input type="email" name="personal-email" id="personal-email" required>
 		
 			<label for="phone">phone number: </label>
-			<input type="text" name="phone" id="phone" required pattern="^06\d{10}$"
+			<input type="text" name="phone" id="phone" required pattern="^06\d{8}$"
 				oninvalid="setCustomValidity('Set the phone number to 10 numbers and start with 06')">
 
 			<label for="birthDay">Your birthday</label>
@@ -62,8 +62,9 @@
  
 		form.addEventListener('submit', function(event) { 
 		event.preventDefault(); 
-		let inputs = form.querySelectorAll("input");
-		inputs.forEach(input => console.log(input.value))
+		let inputs = form.querySelector("input");
+		console.log(inputs.value)
+		// inputs.forEach(input => console.log(input.value))
 		});
 	</script>
 </body>
