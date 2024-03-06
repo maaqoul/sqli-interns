@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Conference form</h1>
+    <form action="#" id="mainForm">
+        <h2>Personnal Information</h2>
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" required>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required>
+        <label for="date-of-birth">Date of Birth</label>
+        <input type="date" name="date-of-birth" id="date-of-birth" max="2014-03-03" required>
+        <h2>Preferences</h2>
+        <label for="type-attendee">Type of attendee</label>
+        <!-- <input type="list" list="type" required> -->
+        <select name="type" id="type" required>
+            <option value="student">Student</option>
+            <option value="professional">Professional</option>
+            <option value="intern">Intern</option>
+        </select>
+        <fieldset style="width: 200px;">
+            <legend>areas of interest</legend>
+            <input name="interests" type="checkbox" id="web" value="web"/>
+            <label for="web">web</label>
+            <input name="interests" type="checkbox" id="mobile" value="mobile"/>
+            <label for="mobile">mobile</label>
+            <input name="interests" type="checkbox" id="cloud" value="cloud"/>
+            <label for="cloud">cloud</label>
+            <input name="interests" type="checkbox" id="security" value="security"/>
+            <label for="security">security</label>
+            <input name="interests" type="checkbox" id="data-science" value="data-science"/>
+            <label for="data-science">data science</label>
+        </fieldset>
+        <h2>Paiement Details</h2>
+        <label for="credit-num">Credit Card Number</label>
+        <input type="text" name="credit-num" id="credit-num" pattern="[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}" maxlength="19" 
+        placeholder="xxxx xxxx xxxx xxxx" required>
+        <label for="cvv">CVV</label>
+        <input type="text" name="cvv" id="cvv" pattern="[0-9]{3}" required>
+        <label for="date-exp">date of expiry</label>
+        <input type="date" name="date-exp" id="date-exp" max="2024-03-05" required>
+        <input type="submit" value="submit" style="padding: 10px;">
+    </form>
+</body>
+</html>
+<script>
+    
+    document.addEventListener("DOMContentLoaded", function() {
+        const mainForm = document.querySelector("#mainForm");
+        mainForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const lengthCheck = document.querySelectorAll("input[type=checkbox]:checked").length;
+            if (lengthCheck == 0) {
+                console.log("Please select at least on interest area");
+            } else {
+                const mainFormData = new FormData(mainForm);
+                const info = {
+                    "Name": mainFormData.get('name'),
+                    "Email": mainFormData.get('email'),
+                    "Date Of Birth": mainFormData.get('date-of-birth'),
+                    "Type of attendee": mainFormData.get('type'),
+                    "Interests": mainFormData.getAll('interests'),
+                    "Credit Card Number": mainFormData.get('credit-num'),
+                    "CVV": mainFormData.get('cvv'),
+                    "Date Of Expiry": mainFormData.get('date-exp')
+                };
+                console.log(info);
+            }
+            })
+    });
+</script>
