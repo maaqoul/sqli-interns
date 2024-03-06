@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="height: calc(100vh - 100px); margin: 0;">
+    <svg width="100%" height="100%">
+        <defs>
+            <linearGradient id="bg-gradient" x1="0%" x2="0%" y1="0%" y2="100%">
+                <stop offset="0%" stop-color="#ADD8E6"/>
+                <stop offset="30%" stop-color="#00d2ff"/>
+                <stop offset="100%" stop-color="black"/>
+            </linearGradient>
+            <linearGradient id="sun-gradient" x1="0%" x2="0%" y1="0%" y2="100%">
+                <stop offset="5%" stop-color="gold"/>
+                <stop offset="100%" stop-color="red"/>
+            </linearGradient>
+            <linearGradient id="moon-gradient" x1="0%" x2="0%" y1="0%" y2="100%">
+                <stop offset="5%" stop-color="#FAFAFA"/>
+                <stop offset="100%" stop-color="#ffffe4"/>
+            </linearGradient>
+            <linearGradient id="lake-gradient" x1="0%" x2="0%" y1="0%" y2="100%">
+                <stop offset="0%" stop-color="#4779c4"/>
+                <stop offset="100%" stop-color="#1b2d48"/>
+            </linearGradient>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#bg-gradient)"/>
+        <circle cx="95%" cy="10%" r="4%" fill="url(#sun-gradient)"/>
+        <circle cx="5%" cy="85%" r="4%" fill="url(#moon-gradient)"/>
+        <path d="M50,250 L200,100 L220,130 L240,90 L270,180 L300,70 L350,250" stroke="Gray" fill="#5a5b62"/>
+        <path d="M250,250 L400,100 L420,130 L440,90 L470,180 L500,70 L550,250" stroke="Gray"fill="#c1c5d6"/>
+        <path d="M450,250 L600,50 L620,80 L640,40 L670,130 L700,20 L750,250" stroke="Gray" fill="#787fa0"/>
+        <path d="M650,250 L800,70 L850,150 L950,100 L1000,130 L1050,20 L1200,250" stroke="Gray" fill="#c1c5d6"/>
+        <rect width="80%" height="100" fill="url(#lake-gradient)" rx="20" x="15%" y="80%"/>
+    </svg>
+</body>
+</html>
