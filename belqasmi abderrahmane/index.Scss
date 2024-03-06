@@ -1,0 +1,60 @@
+.study {
+	background: linear-gradient(180deg, #0c0c1d, #111132);
+	height: 100vh;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	.titleContainer {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		gap: 20px;
+		height: 100%;
+		width: 100%;
+		h1 {
+			font-size: 50px;
+			font-weight: 100;
+			text-align: center;
+			@include mobile {
+				font-size: 20px;
+				font-weight: 100;
+				padding-top: 30px;
+			}
+		}
+	}
+	.lettreContainer {
+		padding: 80px;
+		font-weight: bold;
+		@include mobile {
+			font-size: 12px;
+			padding: 30px;
+		}
+		p {
+			text-align: center;
+		}
+	}
+	.subjectsContainer {
+		flex: 2;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		max-width: calc(100vw - 400px);
+		@include mobile {
+			max-width: calc(100vw - 100px);
+		}
+		margin: auto;
+		gap: 15px;
+		.box {
+			border: 0.5px solid gray;
+			border-radius: 10px;
+			display: flex;
+			align-items: center;
+			padding: 20px;
+			span {
+				padding: 10px;
+			}
+		}
+	}
+}
