@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Form</title>
+</head>
+
+<body>
+    <form id="myForm" action="">
+        <p>
+            <label for="name">Name : </label>
+            <input type="text" name="name" id="name" placeholder="Ahmed Bentaj" required>
+        </p>
+
+        <p>
+            <label for="email">Email : </label>
+            <input type="email" name="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                placeholder="example@test.com" required>
+        </p>
+
+        <p>
+            <label for="birth">Date of Birth : </label>
+            <input type="date" name="birth" id="birth" max="2006-03-06" min="1900-01-01" required>
+        </p>
+
+        <p>
+            <label for="type">Type of Attendency : </label>
+
+            <select name="type" id="type">
+                <option value="student">Student</option>
+                <option value="intern">Intern</option>
+                <option value="proffesional">Proffesional</option>
+            </select>
+
+            <!-- <input type="radio" id="student" name="profession" value="student">
+            <label for="student">Student</label>
+
+            <input type="radio" id="intern" name="profession" value="intern">
+            <label for="intern">Intern</label>
+
+            <input type="radio" id="proffesional" name="profession" value="proffesional">
+            <label for="proffesional">Proffesional</label> -->
+        </p>
+
+        <p>
+            <label for="interest">Areas of Interest : </label>
+
+            <input type="checkbox" id="web" name="interest" value="web">
+            <label for="web">Web Dev</label>
+
+            <input type="checkbox" id="mobile" name="interest" value="mobile">
+            <label for="mobile">Mobile Dev</label>
+
+            <input type="checkbox" id="cloud" name="interest" value="cloud">
+            <label for="cloud">Cloud Computing</label>
+
+            <input type="checkbox" id="devops" name="interest" value="devops">
+            <label for="devops">DevOps</label>
+
+            <input type="checkbox" id="security" name="interest" value="security">
+            <label for="security">Cyber Security</label>
+
+            <input type="checkbox" id="science" name="interest" value="science">
+            <label for="science">Data Science</label>
+        </p>
+
+        <p>
+            <label for="card">Card Number : </label>
+            <input type="text" name="card" id="card" pattern="^\d{4}(\s\d{4}){3}$" placeholder="1234 5678 8901 2345"
+                required>
+        </p>
+
+        <p>
+            <label for="expiry">Date of Expiry (MM/YY) : </label>
+            <input type="text" name="expiry" id="expiry" pattern="^(0[1-9]|1[0-2])\/([0-9]{2})$" placeholder="03/24"
+                required>
+        </p>
+
+        <p>
+            <label for="cvv">CVV : </label>
+            <input type="number" name="cvv" id="cvv" max="999" min="100" pattern="^\d{3}$" placeholder="123" required>
+        </p>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const form = document.getElementById('myForm');
+            const formData = new FormData(form);
+
+            const interests = formData.getAll('interest');
+            let interestLength = interests.length;
+
+            if (interestLength < 1) {
+                console.log("You have to select at least one of the interest area!");
+            } else {
+                var data = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    birth: formData.get('birth'),
+                    profession: formData.get('type'),
+                    interests: interests,
+                    card: formData.get('card'),
+                    expiry: formData.get('expiry'),
+                    cvv: formData.get('cvv')
+                };
+                console.log(data);
+            }
+        });
+    </script>
+</body>
+
+</html>
