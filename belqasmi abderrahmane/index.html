@@ -6,42 +6,61 @@
     <title>Document</title>
 </head>
 <body>
-    <section
-			class="study"
-		>
-			<header class="titleContainer">
-				<h1>
-					A <b>Passionate</b>
-					Journey of Learning:
-					<br />
-					My <b>Learning</b>
-					Parcours
-				</h1>
-			</header>
-			<article class="lettreContainer">
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-				</p>
-			</article>
-			<article class="subjectsContainer">
-				<header>
-					<h2>Here are some project that i wroked on with c++</h2>
-				</header>
-				<ul>
-					<li
-					class="box"
-					>
-						<span> inception: </span>
-						<p>Set up a small infrastructure composed of WordPress with LEMP Stack (Nginx, MariaDB and PHP) using Docker / Docker-Compose .</p>
-					</li>
-					<li
-					class="box"
-					>
-						<span> ft_containers: </span>
-						<p>reimplement the STL containers vector, stack, map with the RedBlack tree as its balancing algorithm, and the set.</p>
-					</li>
-				</ul>
-			</article>
-		</section>
+    <form>
+		<div>
+
+			<label for="name">Name: </label>
+			<input type="text" name="name" id="name" pattern="[A-Za-z]{3,}" required placeholder="3 character minimum"
+				oninvalid="setCustomValidity('Enter User Name 3 character long')">
+			
+			<label for="personal-email">Email: </label>
+			<input type="email" name="personal-email" id="personal-email" required>
+			
+			<label for="birthDay">Your birthday</label>
+			<input type="date" name="birthDay" id="birthDay" required>
+		</div>
+		<div>
+
+			<label for="preference">Preferences: </label>
+			<input list="preferences" name="preference" id="preference" required>
+			<datalist id="preferences">
+				<option value="student"></option>
+				<option value="proffetional"></option>
+				<option value="intern"></option>
+			</datalist>
+			
+			<label for="interest">Area of interest: </label>
+			<input list="interests" name="interest" id="interest" required>
+			<datalist id="interests">
+				<option value="web"></option>
+				<option value="mobile"></option>
+				<option value="devops"></option>
+				<option value="php"></option>
+				<option value="java"></option>
+			</datalist>
+		</div>
+		<div>
+			<label for="credit" >Credit cards number: </label>
+			<input type="text" name="credit" id="credit" pattern="^\d{4}( \d{4}){3}$" Placeholder="XXXX XXXX XXXX XXXX"
+				oninvalid="setCustomValidity('Set the credit card with numbers by 4 divided by space')" required>
+
+			<label for="ccv">CCV: </label>
+			<input type="text" name="ccv" id="ccv" pattern="\d{3}" required
+				oninvalid="setCustomValidity('Set CCV to the 3 numbers behind our credit card')">
+
+			<label for="expiry">Expiry date: </label>
+			<input type="date" name="expiry" id="expiry" >
+		</div>
+		<input type="submit">
+	</form>
+	<script>
+		const form = document.querySelector('form'); 
+ 
+		form.addEventListener('submit', function(event) { 
+		event.preventDefault(); 
+		let inputs = form.querySelectorAll("input");
+		inputs.forEach(input => console.log(input.value))
+		});
+	</script>
 </body>
 </html>
