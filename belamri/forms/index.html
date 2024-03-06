@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web innovators 2024</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+        form {
+            font-family: Arial, sans-serif;
+            width: 400px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+        <form>
+            <h3>Personal details:</h3>
+            <label for="name">Name:</label>
+            <input pattern="[a-zA-Z\s]+" type="text" id="name" name="name" required/>
+
+            <br>
+
+            <label for="birthday">Date of birth:</label>
+            <input type="date" id="birthday" name="birthday" required/>
+
+            <br>
+
+            <label for="type">Type:</label>
+            <input list="types" id="type" name="type" required/>
+            <datalist id="types">
+                <option value="Student"></option>
+                <option value="Hobbist"></option>
+                <option value="Tourist"></option>
+            </datalist>
+
+            <br>
+
+
+            <h3>Areas of interest:</h3>
+            <input type="checkbox" id="interest1" name="interests" value="webdev">
+            <label for="interest1">Web development</label>
+
+            <br>
+
+            <input type="checkbox" id="interest2" name="interests" value="graphics">
+            <label for="interest2">Graphics</label>
+
+            <br>
+
+            <input type="checkbox" id="interest3" name="interests" value="cybersec">
+            <label for="interest3">Cybersecurity</label>
+
+            <br>
+
+            <input type="checkbox" id="interest3" name="interests" value="mobile">
+            <label for="interest3">Mobile dev</label>
+
+            <br>
+
+            <h3>Payment details:</h3>
+            <label for="ccnumber">Credit card number:</label>
+            <input type="text" pattern="^\d{4} \d{4} \d{4} \d{4}$" placeholder="format: xxxx xxxx xxxx xxxx" id="ccnumber" name="ccnumber" required />
+
+            <br>
+
+            <label for="ccv">CCV:</label>
+            <input type="text" pattern="^\d{3}$" placeholder="format: xxx" id="ccv" name="ccv" required />
+            
+            <br>
+
+            <label for="expiryDate">Expiry Date:</label>
+            <input type="date" id="expiryDate" name="expiryDate" required/>
+
+            <br>
+
+            <button type="submit">Submit</button>
+        </form>
+        <script>
+            const form = document.querySelector('form');
+            form.addEventListener("submit", (event) => {
+                event.preventDefault()
+                if (form.checkValidity()) {
+                    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                    if (Array.from(checkboxes).filter(checkbox => checkbox.checked).length < 2) {
+                        alert("Please select at least 2 interests")
+                        return ;
+                    }
+                    const form = document.querySelector('form');
+                    const formData = new FormData(form)
+                    console.log("Name: ", formData.get('name'))
+                    console.log("Date of birth: ", formData.get('birthday'))
+                    console.log("Type: ", formData.get('type'))
+                    console.log("Interests:")
+                    Array.from(checkboxes).filter(checkbox => checkbox.checked).forEach(type => console.log(type.value))
+                    console.log("Credit card number: ", formData.get('ccnumber'))
+                    console.log("Credit card CCV: ", formData.get('ccv'))
+                    console.log("Credit card expiry date: ", formData.get('expiryDate'))
+                } 
+            });
+        </script>
+</body>
+</html>
+
