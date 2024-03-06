@@ -11,14 +11,16 @@
 
 			<label for="name">Name: </label>
 			<input type="text" name="name" id="name" pattern="[A-Za-z]{3,}" required placeholder="3 character minimum"
-				oninvalid="setCustomValidity('Enter User Name 3 character long')">
+			oninput="setCustomValidity('')"	
+			oninvalid="setCustomValidity('Enter User Name 3 character long')">
 			
 			<label for="personal-email">Email: </label>
 			<input type="email" name="personal-email" id="personal-email" required>
 		
 			<label for="phone">phone number: </label>
 			<input type="text" name="phone" id="phone" required pattern="^06\d{8}$"
-				oninvalid="setCustomValidity('Set the phone number to 10 numbers and start with 06')">
+			oninput="setCustomValidity('')"	
+			oninvalid="setCustomValidity('Set the phone number to 10 numbers and start with 06')">
 
 			<label for="birthDay">Your birthday</label>
 			<input type="date" name="birthDay" id="birthDay" required>
@@ -46,11 +48,13 @@
 		<div>
 			<label for="credit" >Credit cards number: </label>
 			<input type="text" name="credit" id="credit" pattern="^\d{4}( \d{4}){3}$" Placeholder="XXXX XXXX XXXX XXXX"
-				oninvalid="setCustomValidity('Set the credit card with numbers by 4 divided by space')" required>
+			oninput="setCustomValidity('')"	
+			oninvalid="setCustomValidity('Set the credit card with numbers by 4 divided by space')" required>
 
 			<label for="ccv">CCV: </label>
 			<input type="text" name="ccv" id="ccv" pattern="\d{3}" required
-				oninvalid="setCustomValidity('Set CCV to the 3 numbers behind our credit card')">
+			oninput="setCustomValidity('')"	
+			oninvalid="setCustomValidity('Set CCV to the 3 numbers behind our credit card')">
 
 			<label for="expiry">Expiry date: </label>
 			<input type="date" name="expiry" id="expiry" >
