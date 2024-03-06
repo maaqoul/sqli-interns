@@ -8,7 +8,7 @@
   </head>
   <body>
     <h1>get your ticket now for the hugest IT conference in morocco !</h1>
-    <form onsubmit="return validate()">
+    <form class="form">
 
         <h2>fill your personal information :</h2>
         <label for="name">Full name: </label>
@@ -53,17 +53,27 @@
 
 <script>
 
-function validate()
-{
+document.querySelector('.form').addEventListener('submit', function(event) {
+    event.preventDefault();
     validateInput();
+    printFormData();
+});
+  
+function printFormData() {
+    var formData = new FormData(document.querySelector('.form'));
+    for (var pair of formData.entries()) {
+        console.log(pair[0] + ': ' + pair[1]);
+    }
+    return false; 
 }
+
 
 function validateInput() {
     var checkboxes = document.querySelectorAll('input[name="interest"]:checked');
     if (checkboxes.length < 2) {
       alert('Please select at least two interests.');
-
-    }  }
+    }
+  }
 
 </script>
 
