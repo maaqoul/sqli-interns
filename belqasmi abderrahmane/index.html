@@ -62,9 +62,8 @@
  
 		form.addEventListener('submit', function(event) { 
 		event.preventDefault(); 
-		let inputs = form.querySelector("input");
-		console.log(inputs.value)
-		// inputs.forEach(input => console.log(input.value))
+		let inputs = form.querySelectorAll("input");
+		inputs.forEach(input => console.log(input.value))
 		});
 	</script>
 </body>
