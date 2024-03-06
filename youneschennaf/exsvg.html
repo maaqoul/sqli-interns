@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main id="mainSvg" style="display: inline-flex">
+      <!-- Exercise: Interactive SVG Landscape Scene Objective:
+		 Design an interactive SVG landscape scene that changes appearance based on user interaction. The scene will include a sky, sun, mountains, a lake, and trees. The interactivity will involve changing the time of day from day to night, which will alter the colors of the sky, the visibility of the sun and moon, and the scene's overall lighting. 
+		 SVG Features to Incorporate: 
+		 Gradients: Use linear or radial gradients to create a realistic sky and water effects. 
+		 <use> Elements: Reuse SVG elements to efficiently create multiple instances of the same object, like trees or stars. 
+			Interactivity: Utilize SVG's capability to respond to user events like mouse hover or clicks to change elements such as swapping the sun with the moon. 
+			Detailed Instructions Create the Sky Background: 
+			- Use a <rect> element to draw the background. Apply a linear gradient from light blue (day) to dark blue (night). Add the Sun and Moon: Represent the sun and moon with <circle> elements. Place the sun at the top right corner to simulate daylight. 
+			For the moon, use a slightly off-white circle and place it where the sun would be for the night scene. 
+			Initially, make the moon invisible or out of the view box.
+			Draw Mountains: Use the <path> element to create jagged mountain outlines. Fill them with a dark grey to light grey linear gradient for the day, and a darker gradient for the night.
+				Create the Lake:
+				Reflect the sky in the lake by using a <rect> element at the bottom of the scene with a gradient that mirrors the sky's gradient. Populate with Trees: Define a tree using <path> or a combination of <rect> and <circle> elements in the <defs> section. Then, use the <use> element to place multiple trees throughout the landscape. Implement Interactivity: While this typically requires JavaScript, for the purpose of focusing on SVG, you can simulate a change from day to night by instructing users to interact with the SVG through an external mechanism, such
+		as clicking a button outside the SVG (though this part goes slightly beyond the pure SVG scope). Example Code Snippet Here's a snippet to get started, focusing on creating a gradient sky and adding the sun: xmlCopy code<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:rgb(135,206,235); stop-opacity:1" /><stop offset="100%" style="stop-color:rgb(25,25,112); stop-opacity:1" /></linearGradient>--- Define tree, sun, moon here for reuse ---</defs>--- Sky ---<rect width="100%" height="100%" fill="url(#skyGradient)" />--- Sun ---<circle cx="700" cy="100" r="50" fill="yellow" />--- Add mountains, lake, trees here ---</svg> -->
+      <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop
+              offset="0%"
+              style="stop-color: rgb(135, 206, 235); stop-opacity: 1"
+            />
+            <stop
+              offset="100%"
+              style="stop-color: rgb(25, 25, 112); stop-opacity: 1"
+            />
+          </linearGradient>
+          <g id="tree">
+            <rect x="15" y="10" width="20" height="100" fill="brown" />
+            <circle cx="5" cy="10" r="20" fill="green" />
+            <circle cx="25" cy="-20" r="20" fill="green" />
+            <circle cx="40" cy="10" r="20" fill="green" />
+          </g>
+        </defs>
+
+        <rect width="100%" height="100%" fill="url(#skyGradient)" />
+        <circle id="sun" cx="700" cy="100" r="50" fill="yellow" />
+        <circle
+          id="moon"
+          cx="700"
+          cy="100"
+          r="50"
+          fill="lightgray"
+          style="display: none"
+        />
+        <use xlink:href="#tree" x="100" y="124" />
+        <use xlink:href="#tree" x="160" y="180" />
+        <use xlink:href="#tree" x="50" y="160" />
+      </svg>
+    </main>
+  </body>
+</html>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const mainSvg = document.querySelector("#mainSvg");
+    const sun = document.querySelector("#sun");
+    const moon = document.querySelector("#moon");
+    mainSvg.addEventListener("mouseover", (event) => {
+      sun.style.display = "none";
+      moon.style.display = "block";
+    });
+    mainSvg.addEventListener("mouseout", (event) => {
+      sun.style.display = "block";
+      moon.style.display = "none";
+    });
+  });
+</script>
