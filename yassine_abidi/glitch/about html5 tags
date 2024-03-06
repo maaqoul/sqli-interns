@@ -1,0 +1,10 @@
+I used the <header> tag in this page because it helps to define the main header section of the document. Within the <header>, I placed elements like the site logo, navigation menu, and introductory text to provide users with essential information and navigation options right at the top of the page. it improve accessibility for users and search engines.
+
+
+I used the <section> tag to divide the content into distinct sections such as services, our work, pricing, team, and contact sections. This helps organize the content into meaningful chunks.
+
+For <article>, I employed it to encapsulate independent pieces of content, like descriptions of services, team member profiles, and contact information. 
+
+The <nav> tag was utilized to define the navigation menu
+
+I utilized the <footer> tag to define the footer section of the document. Within the footer, I included elements such as contact information, address..
