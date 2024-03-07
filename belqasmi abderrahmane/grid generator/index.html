@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1 id="h">Css Grid Generator</h1>
+    </header>
+    <main>
+        <div class="grid-container">
+            <div class="parent" id="parent">  
+            </div>
+            <div class="child" id="child"></div>
+        </div>
+        <form>
+            <div class="input-box">
+                <label for="grid-template-columns">Column :</label>
+                <input type="number" name="grid-template-columns">
+            </div>
+            <div class="input-box">
+                <label for="grid-template-rows">Rows :</label>
+                <input type="number" name="grid-template-rows">
+            </div>
+            <div class="input-box">
+                <label for="column-gap">Column gap :</label>
+                <input type="number" name="column-gap">
+            </div>
+            <div class="input-box">
+                <label for="row-gap">Row gap :</label>
+                <input type="number" name="row-gap">
+            </div>
+            <button type="submit" class="submit-button">Show the code</button>
+            <div class="modal" id="modal">
+                <div class="content">
+                    <p id="text-content"></p>
+                    <button class="close-btn" id="close-btn" onclick="handleCloseModal()">Close</button>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <script type="text/javascript" src="./index.js"></script>
+</body>
+</html>
