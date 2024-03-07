@@ -1,25 +1,40 @@
+/* elements */ 
 const containerElem = document.getElementById("container")
 const codeWrapperElem = document.getElementById("codeWrapper")
-const showCodeElem = document.getElementById("showCode")
-const htmlorcssElem = document.getElementById('htmlorcss')
+const codePopupElem = document.getElementById("codePopup")
+const displayCodeButtonElem = document.getElementById('displayCodeButton')
+const rowsElem = document.getElementById("rows")
+const columsElem = document.getElementById("columns")
+const cgapElem = document.getElementById("cgap")
+const rgapElem = document.getElementById("rgap")
+
+/* variables */ 
 let rows = 5, columns = 5, cgap = 0, rgap = 0;
 let start;
 let divsCount = 1, divs = []
-let displayHTML = false
+let showingHtml = false
+
+/* elements */ 
 window.addEventListener('load', () => {
-    document.getElementById("rows").addEventListener('input', (e) => (rows = e.target.value, render()))
-    document.getElementById("columns").addEventListener('input', (e) => (columns = e.target.value, render()))
-    document.getElementById("cgap").addEventListener('input', (e) => (cgap = e.target.value, render()))
-    document.getElementById("rgap").addEventListener('input', (e) => (rgap = e.target.value, render()))
+    rowsElem.addEventListener('input', (e) => (rows = e.target.value = e.target.value >= 0 ? e.target.value : 0, render()))
+    columsElem.addEventListener('input', (e) => (columns = e.target.value = e.target.value >= 0 ? e.target.value : 0, render()))
+    cgapElem.addEventListener('input', (e) => (cgap = e.target.value = e.target.value >= 0 ? e.target.value : 0, updateGaps()))
+    rgapElem.addEventListener('input', (e) => (rgap = e.target.value = e.target.value >= 0 ? e.target.value : 0, updateGaps()))
     render()
 })
-const showHtmlOrCss = () => {
-    if (displayHTML) {
-        showCode()
-        htmlorcssElem.innerHTML = "Show HTML"
+
+/* functions */ 
+const displayCode = () => {
+    if (showingHtml) {
+        displayCSS()
+        displayCodeButtonElem.innerHTML = "Show HTML"
         return
     }
-    displayHTML = true
+    showingHtml = true
+    displayHTML()
+}
+
+const displayHTML = () => {
     let code = 
 `
 &lt;<span style="color:#ffea18;">div</span> <span style="color:#f8a384;">class="parent"</span>&gt;
@@ -28,12 +43,13 @@ const showHtmlOrCss = () => {
         code += `   &lt;<span style="color:#ffea18;">div</span> <span style="color:#f8a384;">class="div${i + 1}"</span>&gt &lt;/<span style="color:#ffea18;">div</span>&gt\n`    
     })
     code += `&lt;/<span style="color:#ffea18;">div</span>&gt;`
-    showCodeElem.style.display = 'block'
+    codePopupElem.style.display = 'block'
     codeWrapperElem.innerHTML = code
-    htmlorcssElem.innerHTML = "Show CSS"
+    displayCodeButtonElem.innerHTML = "Show CSS"
 }
-const showCode = () => {
-    displayHTML = false
+
+const displayCSS = () => {
+    showingHtml = false
     let code = 
 `
 <span style="color:yellow;">.parent</span> {
@@ -47,22 +63,26 @@ const showCode = () => {
     divs.forEach((div, i) => {
         code += `<span style="color:yellow;">.div${i + 1}</span> { <span style="color:#5FD4BF;">grid-area</span>: <span style="color:#EE9D7F;">${div}</span>; }\n`
     })
-    showCodeElem.style.display = 'block'
+    codePopupElem.style.display = 'block'
     codeWrapperElem.innerHTML = code
 }
+
 const closePopup = () => {
-    showCodeElem.style.display = 'none'
+    codePopupElem.style.display = 'none'
 }
+
 const reset = () => {
     rows = 5, columns = 5, cgap = 0, rgap = 0, divsCount = 1, divs = []
+    rowsElem.value = 5, columsElem.value = 5, rgapElem.value = 0, cgapElem.value = 0
     render()
 }
+
 const deleteAll = () => {
     while (containerElem.firstChild)
         containerElem.removeChild(containerElem.firstChild);
 }
+
 const addToGrid = (end) => {
-    const selectedAreas = []
     if (start[0] > end[0]) {
         let tmp = start[0]
         start[0] = end[0]
@@ -85,6 +105,7 @@ const addToGrid = (end) => {
         }
     }
 }
+
 const addChildren = (rows, columns) => {
     for (let i = 0; i < rows; i++) {
         for (let j = 0; j < columns; j++) {
@@ -96,6 +117,11 @@ const addChildren = (rows, columns) => {
             containerElem.appendChild(div);
         }
     }
+}
+
+const updateGaps = () => {
+    container.style.columnGap = cgap + 'px';
+    container.style.rowGap = rgap + 'px';
 }
 const render = () => {
     deleteAll()

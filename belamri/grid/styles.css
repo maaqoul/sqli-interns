@@ -9,34 +9,44 @@ body {
     -ms-user-select: none;
     user-select: none; 
 }
+
+main {
+    height: 100%;
+}
+
 input {
     display: block;
     background-color: #211f2f;
     border: 1px solid #666;
     color: white;
 }
+
 .container {
     position: relative;
     display: grid;
     min-height: 200px;
     max-width: 900px;
     height: 60%;
-    margin: 70px;
+    margin: 40px 70px;
     border: 1px solid #08ffbd;
 }
+
 .child {
     position: relative;
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='8' height='8' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 0h1L0 6V5zm1 5v1H5z' fill='%239C92AC' fill-opacity='.4' fill-rule='evenodd'/%3E%3C/svg%3E");
     border: 1px dotted #fff;
 }
+
 .child:hover {
     cursor: move;
 }
+
 .divNumber {
     position: absolute;
     top: 0;
     left: 0;
 }
+
 button {
     background: transparent;
     color: #08ffbd;
@@ -49,11 +59,13 @@ button {
     font-size: 15px;
     transition: all .35s;
 }
+
 button:hover {
     background: #08ffbd;
     color: #000;
 }
-.showCode {
+
+aside {
     display: none;
     position: fixed;
     top: 50%;
@@ -64,6 +76,7 @@ button:hover {
     background-color: rgba(0,0,0,.7);
     z-index: 20;
 }
+
 .popup {
     position: absolute;
     top: 50%;
@@ -81,9 +94,11 @@ button:hover {
     transition: all .3s ease;
     border: 1px solid #000;
 }
+
 h1 {
     text-align: center;
 }
+
 pre {
     position: relative;
     background: linear-gradient(180deg, #131321 0, #1f1c2c);
@@ -98,22 +113,25 @@ pre {
     min-height: 26vh;
     overflow-y: scroll;
 }
+
 code {
     -webkit-user-select: text;
     -moz-user-select: text;
     -ms-user-select: text;
     user-select: text;
 }
+
 .closeButton {
     position: absolute;
     bottom: 10px;
     left: 50%;
     transform: translate(-50%, 0);
 }
-#htmlorcss {
+
+#displayCodeButton {
     position: absolute;
-    top: 150px;
-    right: -50px;
+    top: 210px;
+    right: 10px;
     transform: translate(-50%, 0);
     min-width: 130px;
 }

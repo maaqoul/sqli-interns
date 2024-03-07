@@ -7,31 +7,32 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <label for="columns">Columns:</label>
-    <input id="columns" type="number" name="columns" value="5" />
-    <label for="rows">Rows:</label>
-    <input id="rows" type="number" name="rows" value="5" />
-    <label for="cgap">Column gap:</label>
-    <input id="cgap" type="number" name="cgap" value="0"/>
-    <label for="rgap">Row gap:</label>
-    <input id="rgap" type="number" name="rgap" value="0"/>
-    <button onclick="showCode()">Show code</button>
-    <button onclick="reset()">Reset</button>
-    <div id="container" class="container">
-        <div class="child"></div>
-    </div>
-    <div id="showCode" class="showCode">
+    <main>
+        <label for="columns">Columns:</label>
+        <input id="columns" type="number" name="columns" value="5" />
+        <label for="rows">Rows:</label>
+        <input id="rows" type="number" name="rows" value="5" />
+        <label for="cgap">Column gap:</label>
+        <input id="cgap" type="number" name="cgap" value="0"/>
+        <label for="rgap">Row gap:</label>
+        <input id="rgap" type="number" name="rgap" value="0"/>
+        <button onclick="displayCSS()">Show code</button>
+        <button onclick="reset()">Reset</button>
+        <div id="container" class="container">
+            <div class="child"></div>
+        </div>
+    </main>
+    <aside id="codePopup">
         <div class="popup">
             <h1>Your code</h1>
             <pre>
                 <code id="codeWrapper">
                 </code>
-                <button id="htmlorcss" onclick="showHtmlOrCss()">Show HTML</button>
             </pre>
+            <button id="displayCodeButton" onclick="displayCode()">Show HTML</button>
             <button class="closeButton" onclick="closePopup()">Close</button>
         </div>
-    </div>
+    </aside>
     <script src="./script.js"></script>
 </body>
 </html>
