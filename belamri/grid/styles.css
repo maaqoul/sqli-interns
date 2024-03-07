@@ -21,15 +21,6 @@ input {
     color: white;
 }
 
-.container {
-    position: relative;
-    display: grid;
-    min-height: 200px;
-    max-width: 900px;
-    height: 60%;
-    margin: 40px 70px;
-    border: 1px solid #08ffbd;
-}
 
 .child {
     position: relative;
@@ -134,4 +125,65 @@ code {
     right: 10px;
     transform: translate(-50%, 0);
     min-width: 130px;
+}
+
+.container {
+    position: relative;
+    display: grid;
+    min-height: 200px;
+    max-width: 900px;
+    height: 100%;
+    border: 1px solid #08ffbd;
+    grid-area: 2 / 2 / 9 / 9;
+}
+
+.gridTable {
+    margin: 40px 70px;
+    height: 60vh;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+}
+
+.widths {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    grid-area: 1 / 2 / 2 / 9;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    max-width: 900px;
+
+}
+
+.inputWrapper {
+    flex: 1;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.inputWrapper input {
+    width: 80%;
+    height: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.heights {
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    grid-area: 2 / 1 / 9 / 2;
+}
+
+.heights input {
+    flex: 1;
+    margin-right: 20px;
+}
+
+@media screen and (max-width: 550px) {
+    .gridTable {
+        margin: 0;
+    }
 }
