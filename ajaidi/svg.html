@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop
+            offset="0%"
+            style="stop-color: rgb(135, 206, 235); stop-opacity: 1"
+          />
+          <stop
+            offset="100%"
+            style="stop-color: rgb(25, 25, 112); stop-opacity: 1"
+          />
+        </linearGradient>
+        <linearGradient id="nightGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop
+              offset="0%"
+              style="stop-color: rgb(25, 25, 112); stop-opacity: 1"
+            />
+            <stop
+            offset="100%"
+            style="stop-color: rgb(135, 206, 235); stop-opacity: 1"
+          />
+          </linearGradient>
+        <!-- Define tree, sun, moon here for reuse -->
+      </defs>
+      <!-- Sky -->
+      <rect width="100%" height="100%" fill="url(#skyGradient)" />
+      <!-- Sun -->
+      <circle cx="700" cy="100" r="50" fill="yellow" id="sun"/>
+      <circle cx="700" cy="100" r="50" fill="gray" id="moon" style="display: none;"/>
+      <!-- Add mountains, lake, trees here -->
+      <path d="M0 350 L60 130 L110 280 L180 130 L220 230 L320 100 L360 350 " style="fill:Gray;stroke:white;stroke-width:3"/>
+    </svg>
+    <p>للبساطة عنوان</p>
+  </body>
+  <script>
+    const sky = document.querySelector("rect")
+    const map = {
+        "true": document.querySelector("#sun"),
+        "false": document.querySelector("#moon")
+    }
+    let day = true;
+    const toNight = () => {
+        map[day + ""].style.display = "none"
+        day = !day;
+        sky.setAttribute("fill", day ? "url(#skyGradient)" :"url(#nightGradient)")
+        map[day + ""].style.display = "block"
+    }
+
+    window.addEventListener('click', () => toNight())
+  </script>
+</html>
