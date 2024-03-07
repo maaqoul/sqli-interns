@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG</title>
+</head>
+<body>
+    <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <!-- sky gradients -->
+            <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:rgb(135,206,235); stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgb(25,25,112); stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="nskyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:rgb(17, 27, 105); stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgb(1, 1, 48); stop-opacity:1" />
+            </linearGradient>
+            <!-- gray gradients -->
+            <linearGradient id="grayGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:rgb(109, 109, 109); stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgb(211,211,211); stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="ngrayGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:rgb(46, 45, 45); stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgb(91, 90, 90); stop-opacity:1" />
+            </linearGradient>
+            <!-- tree -->
+            <g id="tree">
+                <rect x="100" y="300" width="20" height="100" fill="brown" />
+                <circle cx="110" cy="300" r="30" fill="green" />
+            </g>
+            <!-- sun & moon -->
+            <g id="sunC">
+                <circle cx="700" cy="100" r="50" /> 
+            </g>
+        <!-- Define tree, sun, moon here for reuse -->
+        </defs>
+        <!-- Sky -->
+        <rect id="theSky" width="100%" height="100%" fill="url(#skyGradient)" />
+        <!-- Sun -->
+        <use id="sun" href="#sunC" fill="yellow" opacity="1"/>
+        <!-- Moon -->  
+        <use href="#sunC" transform="translate(-600, 0)" fill="white" opacity="0" id="moon" />
+        <!-- Add mountains, lake, trees here -->
+        <!-- Mountains -->
+        <path d="M0 400 L200 200 L400 400 Z" class="mountains" fill="url(#grayGradient)" />
+        <path d="M200 400 L400 200 L600 400 Z" class="mountains" fill="url(#grayGradient)" />
+        <path d="M400 400 L600 200 L800 400 Z" class="mountains" fill="url(#grayGradient)" />
+        <!-- Lake -->
+        <rect id="lake" x="0" y="400" width="800" height="200" fill="url(#skyGradient)" />
+        <!-- Trees -->
+        <use href="#tree" transform="translate(0, 0)" />
+        <use href="#tree" transform="translate(200, 0)" />
+        <use href="#tree" transform="translate(400, 0)" />
+        <use href="#tree" transform="translate(600, 0)" />        
+        
+
+    </svg>
+    <br>
+    <button id="change">Night/day</button>
+
+</body>
+
+<script>
+    const button = document.getElementById("change");
+    const theSky = document.getElementById("theSky");
+    const lake = document.getElementById("lake");
+    const mountains = document.querySelectorAll(".mountains");
+    const sun = document.getElementById("sun");
+    const moon = document.getElementById("moon");
+
+    let isDay = true; 
+
+    
+    button.addEventListener("click", () => {
+    if (theSky.getAttribute("fill") === "url(#skyGradient)") {
+        theSky.setAttribute("fill", "url(#nskyGradient)");
+
+    } else {
+        theSky.setAttribute("fill", "url(#skyGradient)");
+        
+    }
+
+    if (lake.getAttribute("fill") === "url(#skyGradient)") {
+        lake.setAttribute("fill", "url(#nskyGradient)");
+        
+    } else {
+        lake.setAttribute("fill", "url(#skyGradient)");
+
+    }
+
+    mountains.forEach(mountain => {
+        if (mountain.getAttribute("fill") === "url(#grayGradient)") {
+            mountain.setAttribute("fill", "url(#ngrayGradient)");
+        } else {
+            mountain.setAttribute("fill", "url(#grayGradient)");
+        }
+    });
+
+    if (sun.getAttribute("opacity") === "1") {
+        sun.setAttribute("opacity", "0");
+
+    } else {
+        sun.setAttribute("opacity", "1");
+        
+    }
+
+    if (moon.getAttribute("opacity") === "0") {
+        moon.setAttribute("opacity", "1");
+
+    } else {
+        moon.setAttribute("opacity", "0");
+        
+    }
+
+
+    });
+</script>
+
+</html>
