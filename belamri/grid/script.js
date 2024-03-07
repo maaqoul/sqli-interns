@@ -217,6 +217,7 @@ const getGridTemplateRows = () => {
 }
 
 const render = () => {
+    divs = []
     deleteAll()
     addChildren(rows, columns)
     addHeights(rows)
