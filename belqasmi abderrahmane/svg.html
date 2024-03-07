@@ -6,11 +6,16 @@
     <title>Document</title>
 </head>
 <body style="height: calc(100vh - 100px); margin: 0;">
-    <svg width="100%" height="100%">
+    <svg id="landscape" width="100%" height="100%">
         <defs>
-            <linearGradient id="bg-gradient" x1="0%" x2="0%" y1="0%" y2="100%">
+            <linearGradient id="bg-day" x1="0%" x2="0%" y1="0%" y2="100%">
                 <stop offset="0%" stop-color="#ADD8E6"/>
                 <stop offset="30%" stop-color="#00d2ff"/>
+                <stop offset="100%" stop-color="black"/>
+            </linearGradient>
+            <linearGradient id="bg-night" x1="0%" x2="0%" y1="0%" y2="100%">
+                <stop offset="0%" stop-color="#4b8ac8"/>4b8ac8
+                <stop offset="30%" stop-color="#86b0da"/>
                 <stop offset="100%" stop-color="black"/>
             </linearGradient>
             <linearGradient id="sun-gradient" x1="0%" x2="0%" y1="0%" y2="100%">
@@ -25,15 +30,36 @@
                 <stop offset="0%" stop-color="#4779c4"/>
                 <stop offset="100%" stop-color="#1b2d48"/>
             </linearGradient>
+            <g id="tree">
+                <rect y="60" width="50" height="150" fill="brown" stroke="black" stroke-width="0.5"/>
+                <circle cx="20" r="90" fill="green" stroke="black" stroke-width="0.5"/>
+            </g>
+            <circle id="sun" cx="95%" cy="10%" r="4%" fill="url(#sun-gradient)"/>
+            <circle id="moon" cx="5%" cy="10%" r="4%" fill="url(#moon-gradient)"/>
         </defs>
-        <rect width="100%" height="100%" fill="url(#bg-gradient)"/>
-        <circle cx="95%" cy="10%" r="4%" fill="url(#sun-gradient)"/>
-        <circle cx="5%" cy="85%" r="4%" fill="url(#moon-gradient)"/>
-        <path d="M50,250 L200,100 L220,130 L240,90 L270,180 L300,70 L350,250" stroke="Gray" fill="#5a5b62"/>
-        <path d="M250,250 L400,100 L420,130 L440,90 L470,180 L500,70 L550,250" stroke="Gray"fill="#c1c5d6"/>
-        <path d="M450,250 L600,50 L620,80 L640,40 L670,130 L700,20 L750,250" stroke="Gray" fill="#787fa0"/>
-        <path d="M650,250 L800,70 L850,150 L950,100 L1000,130 L1050,20 L1200,250" stroke="Gray" fill="#c1c5d6"/>
+        <rect id="bg" width="100%" height="100%" fill="url(#bg-day)"/>
+        <use id="sun-moon" href="#sun" />
+        <path d="M50,250 L200,100 L220,130 L240,90 L270,180 L300,70 L350,250 Z" stroke="black" fill="#5a5b62"/>
+        <path d="M250,250 L400,100 L420,130 L440,90 L470,180 L500,70 L550,250 Z" stroke="black"fill="#c1c5d6"/>
+        <path d="M450,250 L600,50 L620,80 L640,40 L670,130 L700,20 L750,250 Z" stroke="black" fill="#787fa0"/>
+        <path d="M650,250 L800,70 L850,150 L950,100 L1000,130 L1050,20 L1200,250 Z" stroke="black" fill="#c1c5d6"/>
         <rect width="80%" height="100" fill="url(#lake-gradient)" rx="20" x="15%" y="80%"/>
+        <use href="#tree" x="250" y="250"/>
+        <use href="#tree" x="450" y="200"/>
+        <use href="#tree" x="1000" y="250"/>
+        <use href="#tree" x="1250" y="290"/>
     </svg>
+    <div style="width: 100%; display: flex; justify-content: center;">
+        <button style="padding: 10px; font-size: large; background-color: cadetblue; border-radius: 10px;"
+                onclick="handler()">Switch Day and Night</button>
+    </div>
+    <script>
+        const switcher = document.getElementById('sun-moon');
+        const backGround = document.getElementById('bg')
+        function handler() {
+            switcher.setAttribute('href', switcher.getAttribute('href') === '#sun' ? "#moon" : '#sun')
+            bg.setAttribute('fill', bg.getAttribute('fill') === 'url(#bg-day)' ? "url(#bg-night)" : 'url(#bg-day)')
+        }
+    </script>
 </body>
 </html>
