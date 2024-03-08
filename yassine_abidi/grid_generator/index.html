@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>css grid generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta+Mahee:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+        <p>CSS Grid Generator</p>
+    </header>
+    <main>
+        <section class="interactive_input">
+            <div class="container" id="container">
+                <div id="1" column="1" ></div>
+                <div id="2" column="2"></div>
+                <div id="3" column="3"></div>
+                <div id="4" column="4"></div>
+                <div id="5" column="5"></div>
+                <div id="6" column="1"></div>
+                <div id="7" column="2"></div>
+                <div id="8" column="3"></div>
+                <div id="9" column="4"></div>
+                <div id="10" column="5"></div>
+                <div id="11" column="1"></div>
+                <div id="12" column="2"></div>
+                <div id="13" column="3"></div>
+                <div id="14" column="4"></div>
+                <div id="15" column="5"></div>
+                <div id="16" column="1"></div>
+                <div id="17" column="2"></div>
+                <div id="18" column="3"></div>
+                <div id="19" column="4"></div>
+                <div id="20" column="5"></div>
+                <div id="21" column="1"></div>
+                <div id="22" column="2"></div>
+                <div id="23" column="3"></div>
+                <div id="24" column="4"></div>
+                <div id="25" column="5"></div>
+            </div>
+        </section>
+        <section class="manual_input">
+            <form>
+                <label for="gap">row gap</label>
+                <input type="number" id="rgap" name="gap" min="0"max="50" value="0">
+                <label for="gap">column gap</label>
+                <input type="number" id="cgap" name="gap" min="0"max="50" value="0">
+                <div class="reset" id="resetButton">
+                    <p>reset</p>
+                </div>
+                <div class="generate" id="generate">
+                    <p>generate Code</p>
+                </div>
+            </form> 
+        </section>
+        <section>
+            <div id="popup" class="popup">
+                <div class="popup-content">
+                    <header>
+                        <p class="html" id="html">see html</p>
+                        <p>Your code</p>
+                    </header>
+                    <div class="code" id="code">
+                        <p id="pcode"></p>
+                    </div>
+                    <div class="code2" id="code2">
+                    <p>&lt;div class="parent"&gt;</p>
+                        
+                    </div>
+                    <footer class="codefooter" id="codefooter">
+                        <p>close</p>
+                    </footer>
+                </div>
+            </div>
+        </section>
+    </main>
+  </body>
+  <script>
+        divcount = 1
+        let divElement = document.createElement('div');
+        let sedivElement = document.createElement('div');
+        const container = document.querySelector(".container");
+        const elements = container.querySelectorAll("*");
+        elements.forEach(function(element) {
+            element.addEventListener("mousedown", function() {
+                firstdivId = event.target.id;
+                firstdivCol = element.getAttribute("column");
+                console.log(`click on ${firstdivId}`);  
+                
+            });
+            element.addEventListener("mouseup", function() {
+                const divId = event.target.id;
+                let startcol, endcol, startrow, endrow, check = 0;
+
+                let lastdivCol = element.getAttribute("column");
+                if (parseInt(firstdivId) / 5 > parseInt(divId) / 5)
+                {
+                    check = 1
+                    startrow =  parseInt(divId) / 5;
+                    endrow =  parseInt(firstdivId) / 5;       
+                }
+                else
+                {
+                    endrow =  parseInt(divId) / 5;                
+                    startrow =  parseInt(firstdivId) / 5; 
+                }
+ 
+                // console.log(Math.ceil(startcol))
+                // console.log(Math.ceil(endcol))
+                
+                if (parseInt(firstdivCol) > parseInt(lastdivCol))
+                {
+                    check = 1
+                    startcol =  parseInt(lastdivCol);
+                    endcol =  parseInt(firstdivCol);
+                }
+                else
+                {
+                    endcol =  parseInt(lastdivCol);
+                    startcol =  parseInt(firstdivCol);
+                }
+                if (check)
+                {
+                    start = parseInt(divId)
+                    end = parseInt(firstdivId)
+                }
+                else
+                {
+                    end = parseInt(divId)
+                    start = parseInt(firstdivId)
+                }
+                let red = Math.floor(Math.random() * 256);
+                let green = Math.floor(Math.random() * 256);
+                let blue = Math.floor(Math.random() * 256);
+
+
+                let pElement = document.createElement('p');
+                let sepElemnt = document.createElement('p')
+
+
+                pElement.textContent = `.div${divcount} { grid-area: ${Math.ceil(startrow)} / ${Math.ceil(startcol)} / ${Math.ceil(endrow) + 1} / ${Math.ceil(endcol) + 1}; }`;
+                sepElemnt.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp&lt;div class="div${divcount}"&gt; &lt;/div&gt;`
+
+                divElement.appendChild(pElement);
+                sedivElement.appendChild(sepElemnt)
+                for (let i = 1; i <= 25; i++) {
+                    const elem = document.getElementById(i);
+                    
+                    elemcol = parseInt(elem.getAttribute("column"))
+                    elemrow = Math.ceil(parseInt(elem.getAttribute("id")) / 5)
+                    // console.log(Math.ceil(startrow) ,Math.ceil(startcol) , Math.ceil(endrow), Math.ceil(endcol), elemrow, elemcol)
+                    if (elemrow >= Math.ceil(startrow) && elemrow <= Math.ceil(endrow) && elemcol >= Math.ceil(startcol) && elemcol <= Math.ceil(endcol)) 
+                    {
+                        elem.style.border = '1px dotted #FFF';
+                        elem.style.backgroundColor = `rgba(${red}, ${green}, ${blue}, 0.2)`;
+                    }
+                }
+                divcount++
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+        columnGapValue = 0
+        rowGapValue = 0
+        const columnGapInput = document.getElementById("cgap");
+        const container = document.querySelector(".container");
+
+        columnGapInput.addEventListener("change", function() {
+            columnGapValue = columnGapInput.value;
+            container.style.columnGap = columnGapValue + "px";
+
+        });
+        const rowGapInput = document.getElementById("rgap");
+
+        rowGapInput.addEventListener("change", function() {
+            rowGapValue = rowGapInput.value;
+            container.style.rowGap = rowGapValue + "px";
+        });
+
+        const resetButton = document.getElementById("resetButton");
+
+        resetButton.addEventListener("click", function() {
+            window.location.reload();
+        });
+
+        const codefooter = document.getElementById("codefooter");
+
+        codefooter.addEventListener("click", function() {
+            document.getElementById("popup").style.display = "None"
+            window.location.reload();
+        });
+
+        const generate = document.getElementById("generate");
+
+        generate.addEventListener("click", function() {
+
+            parent = document.createElement('p');
+            parent.innerHTML = `<code>.parent {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbspdisplay: grid;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbspgrid-template-columns: repeat(5, 1fr);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbspgrid-template-rows: repeat(5, 1fr);<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbspgrid-column-gap: ${columnGapValue}px;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbspgrid-row-gap: ${rowGapValue}px;<br>
+            }</code>`;
+            document.getElementById("pcode").appendChild(parent)
+            document.getElementById("pcode").appendChild(divElement)
+            document.getElementById("popup").style.display = "Block"
+
+           
+            let footParagraph = document.createElement('p');
+            footParagraph.innerText = '</div>';
+
+            // document.getElementById("code2").appendChild(headParagraph)
+            document.getElementById("code2").appendChild(sedivElement)
+            document.getElementById("code2").appendChild(footParagraph)
+
+        });
+
+        const html = document.getElementById("html");
+
+        html.addEventListener("click", function() {
+            if (html.innerText == "see html")
+            {
+                document.getElementById("code").style.display = "none"
+                document.getElementById("code2").style.display = "block"
+                html.innerText = "see css"
+            }
+            else
+            {
+                document.getElementById("code").style.display = "block"
+                document.getElementById("code2").style.display = "none"
+                html.innerText = "see html"
+            }
+        });
+
+        });
+  </script>
+</html>
