@@ -92,54 +92,35 @@ parent.addEventListener('mouseup', (event) => {
 
 function setCssCode(){
     let p = document.createElement('span');
-    let closeP = document.createElement('span');
-    p.textContent = ".parent {"
-    closeP.textContent = "}"
+    p.textContent = ".parent"
     p.setAttribute('class', 'content-parent');
-    closeP.setAttribute('class', 'content-parent');
-    cssContent.appendChild(p);
+    cssContent.append(p, ' {');
     for (let item in gridData){
-        let span = document.createElement('span');
         let keySpan = document.createElement('span');
         let contSpan = document.createElement('span');
         
-        span.appendChild(document.createElement('br'));
         keySpan.setAttribute('class', 'content-key');
         contSpan.setAttribute('class', 'content-value');
-        keySpan.textContent = item + ': ';
+        keySpan.textContent = item;
         contSpan.textContent = gridData[item];
-
-        span.appendChild(keySpan);
-        span.appendChild(contSpan);
-        cssContent.appendChild(span);
+        
+        cssContent.append(document.createElement('br'), keySpan, ': ', contSpan);
     }
-    cssContent.appendChild(document.createElement('br'));
-    cssContent.appendChild(closeP);
-    cssContent.appendChild(document.createElement('br'));
-    cssContent.appendChild(document.createElement('br'));
+    cssContent.append(document.createElement('br'), '}', document.createElement('br'), document.createElement('br'));
     for (let item in gridArea){
-        let span = document.createElement('span');
         let divIndex = document.createElement('span');
-        let divIndexClose = document.createElement('span');
         let area = document.createElement('span');
         let position = document.createElement('span');
         
         divIndex.setAttribute('class', 'content-parent');
-        divIndexClose.setAttribute('class', 'content-parent');
         area.setAttribute('class', 'content-key');
         position.setAttribute('class', 'content-value');
         
-        divIndex.textContent = item + " { ";
+        divIndex.textContent = item ;
         area.textContent = 'grid-area: ';
         position.textContent = (gridArea[item])['grid-area'];
-        divIndexClose.textContent = " }";
         
-        span.appendChild(divIndex);
-        span.appendChild(area);
-        span.appendChild(position);
-        span.appendChild(divIndexClose);
-        cssContent.append(span);
-        cssContent.appendChild(document.createElement('br'));
+        cssContent.append(divIndex, ': { ', area, position, ' }', document.createElement('br'));
     }
     let button = document.createElement('button');
     button.setAttribute('class', 'switch');
@@ -153,38 +134,21 @@ function setCssCode(){
     });
 }
 function setHtmlCode(){
-    let div = document.createElement('span')
     let divClass = document.createElement('span')
 
-    div.setAttribute('class', 'content-parent');
     divClass.setAttribute('class', 'content-value');
-    div.textContent = 'div';
     divClass.textContent = 'class="parent"';
 
-    htmlContent.append('<');
-    htmlContent.appendChild(div);
-    htmlContent.appendChild(divClass);
-    htmlContent.append('>');
-    htmlContent.append(document.createElement('br'));
+    htmlContent.append('<div ', divClass, '>', document.createElement('br'));
     for (let item in gridArea){
         let divItem = document.createElement('span');
-        let span = document.createElement('span');
         divItem.setAttribute('class', 'content-value');
-
+        
         divItem.textContent = `class="${item}"`;
-        span.append('<');
-        span.appendChild(div);
-        span.appendChild(divItem);
-        span.append('> ');
-        span.append('</');
-        span.appendChild(div);
-        span.append('>');
-        span.append(document.createElement('br'));
-        htmlContent.appendChild(span);
+        htmlContent.append('<div', divItem, '> </div>', document.createElement('br'));
     }    
-    htmlContent.append('</');
-    htmlContent.appendChild(div);
-    htmlContent.append('>'); 
+    htmlContent.append('</div>');
+
     let button = document.createElement('button');
     button.setAttribute('class', 'switch');
     button.setAttribute('id', 'switch-css');
