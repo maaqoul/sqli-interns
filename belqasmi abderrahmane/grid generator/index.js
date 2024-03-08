@@ -174,6 +174,7 @@ document.getElementById('reset-btn').addEventListener('click',(event) =>{
     event.preventDefault();
     removeAllChildNodes(child);
     gridArea = {};
+    addDiv = 1;
 });
 
 function handleCloseModal() {
