@@ -5,11 +5,11 @@ const child = document.getElementById("grid-child");
 const cssContent = document.getElementById('text-css-content');
 const htmlContent = document.getElementById('text-html-content');
 let mouseDown = 0;
-let z = 1;
+let z = 0;
 let inputs = form.querySelectorAll("input");
 let gridData = {};
 let gridArea = {};
-let addDiv = 1;
+let addDiv = 0;
 function removeAllChildNodes(node) {
     while (node.firstChild) {
         node.removeChild(node.firstChild);
@@ -70,23 +70,25 @@ parent.addEventListener('mouseup', (event) => {
     let mouseUp = parseInt((target.split('-'))[1]);
     let colSize = parseInt(gridData['grid-template-columns']);
     if (mouseDown > mouseUp) [mouseDown, mouseUp] = [mouseUp, mouseDown]
+
     let x0 = mouseDown % colSize || colSize;
     let x1 = (mouseUp % colSize || colSize) + 1;
     let y0 = Math.ceil(mouseDown / colSize);
     let y1 = Math.ceil(mouseUp / colSize) + 1;
     let div = document.createElement('div');
-    div.setAttribute('id', `.div${addDiv}`);
+    if (x0 > x1 - 1) {
+        let diff = x0 - x1 - 1;
+        [x0, x1] = [x0 - diff, x1 + diff];
+    }
+    div.setAttribute('id', `.div${addDiv++}`);
     gridArea[`div${addDiv}`] = { 'grid-area': `${y0} / ${x0} / ${y1} / ${x1}`};
     div.style.border = 'dotted 1px yellow';
     div.style.gridArea= `${y0} / ${x0} / ${y1} / ${x1}`;
     div.style.backgroundColor = genRandomColor();
-    div.style.zIndex = z;
+    div.style.zIndex = z++;
     div.style.cursor = 'pointer';
     div.style.top = 0;
     div.style.left = 0;    
-    addDiv++;
-    z++;
-    console.log(`${y0} / ${x0} / ${y1} / ${x1}`)
     child.appendChild(div);
 })
 
@@ -116,49 +118,29 @@ function setCssCode(){
         area.setAttribute('class', 'content-key');
         position.setAttribute('class', 'content-value');
         
-        divIndex.textContent = item ;
+        divIndex.textContent = '.' + item;
         area.textContent = 'grid-area: ';
         position.textContent = (gridArea[item])['grid-area'];
         
         cssContent.append(divIndex, ': { ', area, position, ' }', document.createElement('br'));
     }
-    let button = document.createElement('button');
-    button.setAttribute('class', 'switch');
-    button.setAttribute('id', 'switch-html');
-    button.textContent = 'Show Html Code';
-    cssContent.appendChild(button);
-    button.addEventListener('click',(event) =>{
-        event.preventDefault();
-        cssContent.style.display = 'none';
-        htmlContent.style.display = 'block';
-    });
 }
+
 function setHtmlCode(){
     let divClass = document.createElement('span')
-
+    
     divClass.setAttribute('class', 'content-value');
     divClass.textContent = 'class="parent"';
-
+    
     htmlContent.append('<div ', divClass, '>', document.createElement('br'));
     for (let item in gridArea){
         let divItem = document.createElement('span');
         divItem.setAttribute('class', 'content-value');
         
         divItem.textContent = `class="${item}"`;
-        htmlContent.append('<div', divItem, '> </div>', document.createElement('br'));
+        htmlContent.append('<div ', divItem, '> </div>', document.createElement('br'));
     }    
     htmlContent.append('</div>');
-
-    let button = document.createElement('button');
-    button.setAttribute('class', 'switch');
-    button.setAttribute('id', 'switch-css');
-    button.textContent = 'Show Css Code';
-    htmlContent.appendChild(button);
-    button.addEventListener('click',(event) =>{
-        event.preventDefault();
-        cssContent.style.display = 'block';
-    htmlContent.style.display = 'none';
-    });
 }
 
 form.addEventListener('submit', function(event) { 
@@ -170,16 +152,18 @@ form.addEventListener('submit', function(event) {
     setHtmlCode();
 });
 
+function handleCloseModal() {
+    modal.style.display = "none";
+}
+
 document.getElementById('reset-btn').addEventListener('click',(event) =>{
     event.preventDefault();
     removeAllChildNodes(child);
     gridArea = {};
-    addDiv = 1;
+    addDiv = 0;
+    z = 0;
 });
 
-function handleCloseModal() {
-    modal.style.display = "none";
-}
 
 window.onclick = function(event) {
     if (event.target == modal) handleCloseModal()
@@ -188,4 +172,16 @@ window.onclick = function(event) {
 document.getElementById('close-btn').addEventListener('click',(event) =>{
     event.preventDefault();
     handleCloseModal();
+});
+
+document.getElementById('switch-css').addEventListener('click',(event) =>{
+    event.preventDefault();
+    cssContent.style.display = 'block';
+    htmlContent.style.display = 'none';
+});
+
+document.getElementById('switch-html').addEventListener('click',(event) =>{
+    event.preventDefault();
+    cssContent.style.display = 'none';
+    htmlContent.style.display = 'block';
 });
