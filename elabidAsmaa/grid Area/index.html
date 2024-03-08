@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>CSS Grid generator</h1>
+    </header>
+    <main>
+      <section id="dataSection">
+        <label for="columns">columns number</label>
+        <input
+          id="columnsInput"
+          type="number"
+          name="columns"
+          min="1"
+          max="10"
+          value="5"
+        />
+        <label for="rows">rows number</label>
+        <input
+          id="rowsInput"
+          type="number"
+          name="rows"
+          min="1"
+          max="10"
+          value="5"
+        />
+        <label for="columnsGap">columns gap in px</label>
+        <input
+          id="columnsGapInput"
+          type="number"
+          name="rows"
+          min="1"
+          max="10"
+          value="0"
+        />
+        <label for="rows">rows gap in px</label>
+        <input
+          id="rowsGapInput"
+          type="number"
+          name="rows"
+          min="1"
+          max="10"
+          value="0"
+        />
+        <section class="buttons-container">
+          <input type="submit" value="Get boxes" onclick="createMainDiv()" />
+          <input type="submit" value="Get code" onclick="getGridsCode()" />
+        </section>
+      </section>
+      <section id="mainDiv" style="user-select: none"></section>
+    </main>
+    <section id="popupSection">
+      <header id="popupHeader">
+        <a class="close" href="#" onclick="closePopup()">&times;</a>
+        Your Grid Code :
+      </header>
+      <pre id="codeP" class="content"></pre>
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>

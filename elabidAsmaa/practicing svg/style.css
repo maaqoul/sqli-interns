@@ -1,0 +1,19 @@
+body {
+  display: grid;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: black;
+  color: whitesmoke;
+  border: none;
+  border-radius: 5px;
+  width: fit-content;
+  margin: 10px auto;
+}
+
+button:hover {
+  background-color: whitesmoke;
+  color: black;
+}

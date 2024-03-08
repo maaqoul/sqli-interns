@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>form validation</title>
+    <link rel="stylesheet" href="style.css">
+
+  </head>
+  <body>
+    <header>
+      <h1>Registration Informations</h1>
+    </header>
+    <main>
+      <form>
+        <fieldset>
+          <legend>Personal Informations:</legend>
+
+          <label for="firstName">First name</label>
+          <input
+            name="firstName"
+            id="firstName"
+            type="text"
+            pattern="^[a-zA-Z]+$"
+          />
+
+          <label for="lastName">Last name</label>
+          <input
+            name="lastName"
+            id="lastName"
+            type="text"
+            pattern="^[a-zA-Z]+$"
+          /><br />
+
+          <label for="email">Email</label>
+          <input name="email" id="email" type="email" />
+
+          <label for="dateOfBirth"></label>
+          <input name="dateOfBirth" id="dateOfBirth" type="date" /><br />
+        </fieldset>
+
+        <fieldset>
+          <legend>Preferences:</legend>
+          <fieldset>
+            <legend>Type of Attendee:</legend>
+
+            <label for="student">Student</label>
+            <input
+              type="radio"
+              id="student"
+              name="TypeOfAttendee"
+              value="student"
+            /><br />
+
+            <label for="trainer">Trainer</label>
+            <input
+              type="radio"
+              id="trainer"
+              name="TypeOfAttendee"
+              value="trainer"
+            /><br />
+
+            <label for="intern">Intern</label>
+            <input
+              type="radio"
+              id="intern"
+              name="TypeOfAttendee"
+              value="intern"
+            /><br />
+          </fieldset>
+          <fieldset>
+            <legend title="You can choose at least two.">
+              Areas of interest:
+            </legend>
+
+            <label for="frontEnd">FrontEnd</label>
+            <input
+              type="checkbox"
+              id="frontEnd"
+              name="interest"
+              value="frontEnd"
+            />
+
+            <label for="backend">Backend</label>
+            <input
+              type="checkbox"
+              id="backend"
+              name="interest"
+              value="backend"
+            /><br />
+
+            <label for="devops">Devops</label>
+            <input type="checkbox" id="devops" name="interest" value="devops" />
+
+            <label for="cloudComputing">Cloud Computing</label>
+            <input
+              type="checkbox"
+              id="cloudComputing"
+              name="interest"
+              value="cloudComputing"
+            /><br />
+          </fieldset>
+        </fieldset>
+
+        <fieldset>
+          <legend>Paiement details:</legend>
+
+          <label for="creditCardNum">Credit Card Number</label>
+          <input
+            id="creditCardNum"
+            type="text"
+            placeholder="XXXX XXXX XXXX XXXX"
+            name="creditCard"
+            pattern="^\d{4} \d{4} \d{4} \d{4}$"
+          /><br />
+
+          <label for="cvv">CVV</label>
+          <input id="cvv" name="cvv" type="text" pattern="^\d{3}$" /> <br/>
+
+          <label for="dateOfExpiry">Date of expiry</label>
+          <input id="dateOfExpiry" name="dateOfExpiry" type="month" /><br/>
+
+        </fieldset>
+
+        <input type="submit" value="Submit" id="submit"/>
+      </form>
+    </main>
+
+    <footer>
+      <p>Copyright &copy; 2024 my website</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
