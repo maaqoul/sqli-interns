@@ -30,7 +30,7 @@ inputs.forEach(input => input.addEventListener('input', () => {
         for (let i = 0 ; i < parseInt(rowSize); i++) {
             for (let j = 0 ; j < parseInt(colSize); j++, index++){
                 let div = document.createElement('div');
-                div.setAttribute('id', `div${index}`);
+                div.setAttribute('id', `div-${index}`);
                 div.style.border = 'dotted 1px yellow';
                 div.style.backgroundColor = 'transparent'
                 div.style.zIndex = 998;
@@ -61,13 +61,13 @@ function genRandomColor() {
 parent.addEventListener('mousedown', (event) => {
     let target = event.target.getAttribute('id');
     if (target === 'parent') return;
-    mouseDown = parseInt((target.split('v'))[1]);
+    mouseDown = parseInt((target.split('-'))[1]);
 })
 
 parent.addEventListener('mouseup', (event) => {
     let target = event.target.getAttribute('id');
     if (target === 'parent') return;
-    let mouseUp = parseInt((target.split('v'))[1]);
+    let mouseUp = parseInt((target.split('-'))[1]);
     let colSize = parseInt(gridData['grid-template-columns']);
     if (mouseDown > mouseUp) [mouseDown, mouseUp] = [mouseUp, mouseDown]
     let x0 = mouseDown % colSize || colSize;
