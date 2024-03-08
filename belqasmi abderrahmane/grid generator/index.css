@@ -95,15 +95,3 @@ input{
     border-radius: 20px;
     box-shadow: 1px 1px 40px black;
 }
-
-.text-content{
-    background-color: #451290;
-    text-align: start;
-    padding: 20px;
-    width: 80%;
-    height: 60%;
-    border: solid 1px yellow;
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-    overflow-y: auto;
-}

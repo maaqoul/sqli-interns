@@ -13,9 +13,9 @@
     </header>
     <main>
         <div class="grid-container">
-            <div class="parent" id="parent">  
+            <div class="parent" id="grid-parent">  
             </div>
-            <div class="child" id="child"></div>
+            <div class="child" id="grid-child"></div>
         </div>
         <form>
             <div class="input-box">
@@ -35,10 +35,13 @@
                 <input type="number" name="row-gap">
             </div>
             <button type="submit-button" class="submit-button">Show the code</button>
-            <button class="reset-button" id="reset-button">Reset the code</button>
+            <button class="reset-button" id="reset-btn">Reset the code</button>
             <div class="modal" id="modal">
                 <div class="content">
-                    <p id="text-content" class="text-content"></p>
+                    <p id="text-css-content" class="css-content">
+                    </p>
+                    <p id="text-html-content" class="html-content">
+                    </p>
                     <button class="close-btn" id="close-btn">Close</button>
                 </div>
             </div>

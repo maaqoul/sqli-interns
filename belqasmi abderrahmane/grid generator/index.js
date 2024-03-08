@@ -1,8 +1,9 @@
 const form = document.querySelector('form'); 
 const modal = document.getElementById("modal");
-const parent = document.getElementById("parent");
-const child = document.getElementById("child");
-const content = document.getElementById('text-content');
+const parent = document.getElementById("grid-parent");
+const child = document.getElementById("grid-child");
+const cssContent = document.getElementById('text-css-content');
+const htmlContent = document.getElementById('text-html-content');
 let mouseDown = 0;
 let z = 1;
 let inputs = form.querySelectorAll("input");
@@ -75,7 +76,7 @@ parent.addEventListener('mouseup', (event) => {
     let y1 = Math.ceil(mouseUp / colSize) + 1;
     let div = document.createElement('div');
     div.setAttribute('id', `.div${addDiv}`);
-    gridArea[`.div${addDiv}`] = { 'grid-area': `${y0} / ${x0} / ${y1} / ${x1}`};
+    gridArea[`div${addDiv}`] = { 'grid-area': `${y0} / ${x0} / ${y1} / ${x1}`};
     div.style.border = 'dotted 1px yellow';
     div.style.gridArea= `${y0} / ${x0} / ${y1} / ${x1}`;
     div.style.backgroundColor = genRandomColor();
@@ -89,17 +90,14 @@ parent.addEventListener('mouseup', (event) => {
     child.appendChild(div);
 })
 
-form.addEventListener('submit', function(event) { 
-    event.preventDefault();
-    removeAllChildNodes(content);
-    modal.style.display = "flex";
+function setCssCode(){
     let p = document.createElement('span');
     let closeP = document.createElement('span');
     p.textContent = ".parent {"
     closeP.textContent = "}"
     p.setAttribute('class', 'content-parent');
     closeP.setAttribute('class', 'content-parent');
-    content.appendChild(p);
+    cssContent.appendChild(p);
     for (let item in gridData){
         let span = document.createElement('span');
         let keySpan = document.createElement('span');
@@ -113,12 +111,12 @@ form.addEventListener('submit', function(event) {
 
         span.appendChild(keySpan);
         span.appendChild(contSpan);
-        content.appendChild(span);
+        cssContent.appendChild(span);
     }
-    content.appendChild(document.createElement('br'));
-    content.appendChild(closeP);
-    content.appendChild(document.createElement('br'));
-    content.appendChild(document.createElement('br'));
+    cssContent.appendChild(document.createElement('br'));
+    cssContent.appendChild(closeP);
+    cssContent.appendChild(document.createElement('br'));
+    cssContent.appendChild(document.createElement('br'));
     for (let item in gridArea){
         let span = document.createElement('span');
         let divIndex = document.createElement('span');
@@ -140,12 +138,75 @@ form.addEventListener('submit', function(event) {
         span.appendChild(area);
         span.appendChild(position);
         span.appendChild(divIndexClose);
-        content.append(span);
-        content.appendChild(document.createElement('br'));
+        cssContent.append(span);
+        cssContent.appendChild(document.createElement('br'));
     }
+    let button = document.createElement('button');
+    button.setAttribute('class', 'switch');
+    button.setAttribute('id', 'switch-html');
+    button.textContent = 'Show Html Code';
+    cssContent.appendChild(button);
+    button.addEventListener('click',(event) =>{
+        event.preventDefault();
+        cssContent.style.display = 'none';
+        htmlContent.style.display = 'block';
+    });
+}
+function setHtmlCode(){
+    let div = document.createElement('span')
+    let divClass = document.createElement('span')
+
+    div.setAttribute('class', 'content-parent');
+    divClass.setAttribute('class', 'content-value');
+    div.textContent = 'div';
+    divClass.textContent = 'class="parent"';
+
+    htmlContent.append('<');
+    htmlContent.appendChild(div);
+    htmlContent.appendChild(divClass);
+    htmlContent.append('>');
+    htmlContent.append(document.createElement('br'));
+    for (let item in gridArea){
+        let divItem = document.createElement('span');
+        let span = document.createElement('span');
+        divItem.setAttribute('class', 'content-value');
+
+        divItem.textContent = `class="${item}"`;
+        span.append('<');
+        span.appendChild(div);
+        span.appendChild(divItem);
+        span.append('> ');
+        span.append('</');
+        span.appendChild(div);
+        span.append('>');
+        span.append(document.createElement('br'));
+        htmlContent.appendChild(span);
+    }    
+    htmlContent.append('</');
+    htmlContent.appendChild(div);
+    htmlContent.append('>'); 
+    let button = document.createElement('button');
+    button.setAttribute('class', 'switch');
+    button.setAttribute('id', 'switch-css');
+    button.textContent = 'Show Css Code';
+    htmlContent.appendChild(button);
+    button.addEventListener('click',(event) =>{
+        event.preventDefault();
+        cssContent.style.display = 'block';
+    htmlContent.style.display = 'none';
+    });
+}
+
+form.addEventListener('submit', function(event) { 
+    event.preventDefault();
+    removeAllChildNodes(cssContent);
+    removeAllChildNodes(htmlContent);
+    modal.style.display = "flex";
+    setCssCode();
+    setHtmlCode();
 });
 
-document.getElementById('reset-button').addEventListener('click',(event) =>{
+document.getElementById('reset-btn').addEventListener('click',(event) =>{
     event.preventDefault();
     removeAllChildNodes(child);
     gridArea = {};
