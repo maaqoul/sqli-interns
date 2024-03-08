@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./grid-code.css">
     <title>Document</title>
 </head>
 <body>
@@ -33,11 +34,12 @@
                 <label for="row-gap">Row gap :</label>
                 <input type="number" name="row-gap">
             </div>
-            <button type="submit" class="submit-button">Show the code</button>
+            <button type="submit-button" class="submit-button">Show the code</button>
+            <button class="reset-button" id="reset-button">Reset the code</button>
             <div class="modal" id="modal">
                 <div class="content">
-                    <p id="text-content"></p>
-                    <button class="close-btn" id="close-btn" onclick="handleCloseModal()">Close</button>
+                    <p id="text-content" class="text-content"></p>
+                    <button class="close-btn" id="close-btn">Close</button>
                 </div>
             </div>
         </form>
