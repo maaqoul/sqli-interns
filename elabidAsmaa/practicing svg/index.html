@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+      <!-- Define gradients -->
+      <defs>
+        <!-- Day gradient for sky -->
+        <linearGradient id="skyGradientDay" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop
+            offset="0%"
+            style="stop-color: rgb(135, 206, 235); stop-opacity: 1"
+          />
+          <stop
+            offset="100%"
+            style="stop-color: rgb(25, 25, 112); stop-opacity: 1"
+          />
+        </linearGradient>
+        <!-- Night gradient for sky -->
+        <linearGradient id="skyGradientNight" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color: #001f3f; stop-opacity: 1" />
+          <stop offset="100%" style="stop-color: #0a043c; stop-opacity: 1" />
+        </linearGradient>
+        <!-- Day gradient for moutain-->
+        <linearGradient id="mountainGradientDay">
+          <stop
+            offset="0%"
+            style="stop-color: rgb(73.3, 54.5, 41.2); stop-opacity: 1"
+          />
+          <stop
+            offset="100%"
+            style="stop-color: rgb(54.5, 25.9, 5.9); stop-opacity: 1"
+          />
+        </linearGradient>
+        <!-- Night gradient for moutain-->
+        <linearGradient id="mountainGradientNight">
+          <stop offset="0%" style="stop-color: #333333; stop-opacity: 1" />
+          <stop offset="100%" style="stop-color: #1a1a1a; stop-opacity: 1" />
+        </linearGradient>
+        <!-- Day gradient for terre -->
+        <linearGradient id="terreGradientDay" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color: 8B4513; stop-opacity: 1" />
+          <stop offset="100%" style="stop-color: #cd853f; stop-opacity: 1" />
+        </linearGradient>
+        <!-- Night gradient for terre -->
+        <linearGradient
+          id="terreGradientNight"
+          x1="0%"
+          y1="0%"
+          x2="0%"
+          y2="100%"
+        >
+          <stop offset="0%" style="stop-color: #533118; stop-opacity: 1" />
+          <stop offset="100%" style="stop-color: #1e0d04; stop-opacity: 1" />
+        </linearGradient>
+        <rect width="50" height="30" fill="url(#mountainGradientNight)" />
+        <path
+          id="mountainDay"
+          d="M100,300 L300,100 L500,300 Z"
+          fill="url(#mountainGradientDay)"
+        />
+        <path
+          id="mountainNight"
+          d="M100,300 L300,100 L500,300 Z"
+          fill="url(#mountainGradientNight)"
+        />
+      </defs>
+
+      <!-- DaySky -->
+      <rect
+        id="sky"
+        width="100%"
+        height="100%"
+        fill="url(#skyGradientDay)"
+        style="display: none"
+      />
+      <!-- NightSky -->
+      <rect id="sky" width="100%" height="100%" fill="url(#skyGradientNight)" style="display: inline;" />
+      <!-- Sun -->
+      <circle
+        id="sun"
+        cx="700"
+        cy="100"
+        r="50"
+        fill="yellow"
+        style="display: none"
+      />
+      <!-- Moon -->
+      <circle id="moon" cx="700" cy="100" r="50" fill="white" style="display: inline;" />
+      <!-- Mountains Day-->
+      <use xlink:href="#mountainDay" x="400" y="50" style="display: none" />
+      <use xlink:href="#mountainDay" x="250" y="60" style="display: none" />
+      <use xlink:href="#mountainDay" x="-200" y="0" style="display: none" />
+      <!-- Mountains Night-->
+      <use xlink:href="#mountainNight" x="400" y="50" style="display: inline;" />
+      <use xlink:href="#mountainNight" x="250" y="60" style="display: inline;" />
+      <use xlink:href="#mountainNight" x="-200" y="0" style="display: inline;" />
+      <!--terre Day-->
+      <rect
+        x="0"
+        y="300"
+        width="800"
+        height="400"
+        fill="url(#terreGradientDay)"
+        style="display: none"
+      />
+      <!--terre Night-->
+      <rect
+        x="0"
+        y="300"
+        width="800"
+        height="400"
+        fill="url(#terreGradientNight)"
+        style="display: inline;"
+      />
+      <!-- Trees -->
+      <rect x="100" y="400" width="20" height="80" fill="brown" />
+      <polygon points="90,400 130,400 110,320" fill="green" />
+      <rect x="200" y="420" width="20" height="80" fill="brown" />
+      <polygon points="190,420 230,420 210,340" fill="green" />
+      <rect x="300" y="390" width="20" height="80" fill="brown" />
+      <polygon points="290,390 330,390 310,310" fill="green" />
+    </svg>
+    <button onclick="changeMode()">DAY</button>
+    <script src="script.js"></script>
+  </body>
+</html>
