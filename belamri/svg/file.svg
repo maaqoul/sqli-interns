@@ -1,0 +1,105 @@
+<svg id="svg" width="800" height="600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="skyNight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:rgb(0,0,0); stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(25,25,112); stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="skyDay" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:rgb(0,249,255); stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(201,252,253); stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="landGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:rgb(0,255,0); stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(0,150,0); stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="mountainNightGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:rgb(0,0,0); stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(255,255,255); stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="mountainDayGradient" x1="0%" y1="0%" x2="0%" y2="140%">
+      <stop offset="0%" style="stop-color:rgb(255,255,255); stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(0,0,0); stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="sky2Night" x1="0%" y1="0%" x2="0%" y2="125%">
+      <stop offset="0%" style="stop-color:rgb(0,0,0); stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(25,25,112); stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="sky2Day" x1="0%" y1="0%" x2="0%" y2="125%">
+      <stop offset="0%" style="stop-color:rgb(0,249,255); stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(201,252,253); stop-opacity:1" />
+    </linearGradient>
+    <g id="tree">
+      <rect x="-5" y="20" width="10" height="30" fill="brown" />
+      <circle cx="0" cy="20" r="15" fill="green" />
+    </g>
+    <!-- Define tree, sun, moon here for reuse -->
+  </defs>
+  <!-- Sky -->
+  <rect id="sky" width="100%" height="100%" fill="url(#skyDay)" />
+  <!-- Sun -->
+  <circle id="sun" cx="700" cy="100" r="50" fill="yellow" />
+  <!-- Add mountains, lake, trees here -->
+  <!-- mountain -->
+  <polygon id="mountain1" transform="translate(-10, 110) scale(2)" points="100,20 20,180 180,180" fill="url(#mountainDayGradient)" />
+  <polygon id="mountain2" transform="translate(90, 200) scale(2)" points="100,20 20,180 180,180" fill="url(#mountainDayGradient)" />
+  <polygon id="mountain3" transform="translate(-100, 120) scale(2)" points="100,20 20,180 180,180" fill="url(#mountainDayGradient)" />
+  <!-- land -->
+  <rect x="0" y="80%" width="100%" height="20%" fill="url(#landGradient)" />
+  <path transform="translate(690, 400) rotate(50) scale(.7)" d="M0,120
+           C40,200 50,100 100,120
+           C150,140 150,140 200,120
+           C250,100 250,100 300,10
+           C320,110 300,20 400,00
+           L300,200
+           L30,180
+           Z" fill="blue" />
+  <path transform="translate(550, 400) rotate(50) scale(.7)" d="M0,0
+          L300,0
+          L400,100
+          C350,120 350,120 300,100
+          C250,80 250,80 200,100
+          C150,120 150,120 100,100
+          C20,80 0,20 0,0
+          Z" fill="blue" />
+  <rect id="sky2" transform="translate(490)" width="20%" height="80%" fill="url(#sky2Day)" />
+  <use xlink:href="#tree" transform="translate(60, 460)" />
+  <use xlink:href="#tree" transform="translate(90, 500)" />
+  <use xlink:href="#tree" transform="translate(130, 470)" />
+  <use xlink:href="#tree" transform="translate(130, 520)" />
+  <use xlink:href="#tree" transform="translate(50, 520)" />
+
+  <use xlink:href="#tree" transform="translate(180, 460)" />
+  <use xlink:href="#tree" transform="translate(200, 500)" />
+  <use xlink:href="#tree" transform="translate(240, 470)" />
+  <use xlink:href="#tree" transform="translate(170, 520)" />
+  <use xlink:href="#tree" transform="translate(230, 520)" />
+  <use xlink:href="#tree" transform="translate(300, 520)" />
+
+  <use xlink:href="#tree" transform="translate(270, 460)" />
+  <use xlink:href="#tree" transform="translate(260, 500)" />
+  <use xlink:href="#tree" transform="translate(310, 470)" />
+  <use xlink:href="#tree" transform="translate(340, 520)" />
+  <use xlink:href="#tree" transform="translate(390, 510)" />
+
+  <use xlink:href="#tree" transform="translate(350, 460)" />
+  <use xlink:href="#tree" transform="translate(360, 500)" />
+  <use xlink:href="#tree" transform="translate(400, 470)" />
+  <use xlink:href="#tree" transform="translate(430, 520)" />
+  <use xlink:href="#tree" transform="translate(490, 520)" />
+
+  <use xlink:href="#tree" transform="translate(450, 460)" />
+  <use xlink:href="#tree" transform="translate(460, 500)" />
+  <use xlink:href="#tree" transform="translate(500, 470)" />
+  <polygon id="star" points="0,-12.281328 3.609392,-4.967901 11.680237,-3.795139 5.840118,1.897569 7.218783,9.935803 0,6.140664 -7.218783,9.935803 -5.840118,1.897569 -11.680237,-3.795139 -3.609392,-4.967901 0,-12.281328" transform="matrix(-.580522 0.814244-.814244-.580522 50 50)" fill="transparent" stroke-width="0" />
+  <polygon id="star" points="0,-8.183213 2.404986,-3.310179 7.782698,-2.528752 3.891349,1.264376 4.809972,6.620359 0,4.091607 -4.809972,6.620359 -3.891349,1.264376 -7.782698,-2.528752 -2.404986,-3.310179 0,-8.183213" transform="matrix(.681104-.732187 0.732187 0.681104 105.99164 84.997678)" fill="transparent" stroke-width="0" />
+  <polygon id="star" points="0,-10.91821 3.208781,-4.416509 10.383835,-3.373912 5.191917,1.686956 6.417563,8.833018 0,5.459105 -6.417563,8.833018 -5.191917,1.686956 -10.383835,-3.373912 -3.208781,-4.416509 0,-10.91821" transform="matrix(1 0 0-1 119.31909 40.17025)" fill="transparent" stroke-width="0" />
+  <polygon id="star" points="0,-9.72735 2.858796,-3.934796 9.25126,-3.005917 4.62563,1.502958 5.717593,7.869592 0,4.863675 -5.717593,7.869592 -4.62563,1.502958 -9.25126,-3.005917 -2.858796,-3.934796 0,-9.72735" transform="matrix(0 1-1 0 215 79.424059)" fill="transparent" stroke-width="0" />
+  <polygon id="star" points="0,-13.830262 4.064612,-5.594459 13.153361,-4.273786 6.57668,2.136893 8.129224,11.188917 0,6.915131 -8.129224,11.188917 -6.57668,2.136893 -13.153361,-4.273786 -4.064612,-5.594459 0,-13.830262" transform="matrix(-1 0 0-1 240 31.337232)" fill="transparent" stroke-width="0" />
+  <polygon id="star" points="0,-11.324681 3.32824,-4.58093 10.770412,-3.499519 5.385206,1.749759 6.65648,9.161859 0,5.66234 -6.65648,9.161859 -5.385206,1.749759 -10.770412,-3.499519 -3.32824,-4.58093 0,-11.324681" transform="matrix(0-1 1 0 285 100)" fill="transparent" stroke-width="0" />
+  <polygon id="star" points="0,-10.584753 3.110781,-4.281623 10.066698,-3.270869 5.033349,1.635434 6.221562,8.563245 0,5.292377 -6.221562,8.563245 -5.033349,1.635434 -10.066698,-3.270869 -3.110781,-4.281623 0,-10.584753" transform="matrix(0 1-1 0 300 51.08846)" fill="transparent" stroke-width="0" />
+  <polygon id="star" points="0,-11.188917 3.28834,-4.526012 10.641292,-3.457566 5.320646,1.728783 6.57668,9.052024 0,5.594458 -6.57668,9.052024 -5.320646,1.728783 -10.641292,-3.457566 -3.28834,-4.526012 0,-11.188917" transform="matrix(0-1 1 0 430 20.148315)" fill="transparent" stroke-width="0" />
+  <polygon id="star" points="0,-10 2.938926,-4.045085 9.510565,-3.09017 4.755283,1.545085 5.877853,8.09017 0,5 -5.877853,8.09017 -4.755283,1.545085 -9.510565,-3.09017 -2.938926,-4.045085 0,-10" transform="matrix(0 1-1 0 435 95.205219)" fill="transparent" stroke-width="0" />
+  <polygon id="star" points="0,-11.090082 3.259293,-4.486033 10.547295,-3.427024 5.273648,1.713512 6.518587,8.972065 0,5.545041 -6.518587,8.972065 -5.273648,1.713512 -10.547295,-3.427024 -3.259293,-4.486033 0,-11.090082" transform="matrix(-1 0 0-1 375 95.205219)" fill="transparent" stroke-width="0" />
+  <polygon id="star" points="0,-10.07782 2.961797,-4.076564 9.584577,-3.114218 4.792288,1.557109 5.923594,8.153128 0,5.03891 -5.923594,8.153128 -4.792288,1.557109 -9.584577,-3.114218 -2.961797,-4.076564 0,-10.07782" transform="translate(488.333409 44.232043)" fill="transparent" stroke-width="0" />
+  <polygon id="star" points="0,-11.324681 3.32824,-4.58093 10.770412,-3.499519 5.385206,1.749759 6.65648,9.161859 0,5.66234 -6.65648,9.161859 -5.385206,1.749759 -10.770412,-3.499519 -3.32824,-4.58093 0,-11.324681" transform="matrix(0-1 1 0 550 88.675319)" fill="transparent" stroke-width="0" />
+</svg>
