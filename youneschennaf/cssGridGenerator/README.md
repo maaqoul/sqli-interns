@@ -4,4 +4,4 @@
 
 - I was faced with some challenges too such as : my lack of knowledge for some properties and css selectors.
 
-- here is a [demo](css-grid-generator.vercel.app/)
+- here is a [demo](https://css-grid-generator.vercel.app/)
