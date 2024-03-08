@@ -12,16 +12,16 @@ let lastDivToColor;
 let numDivs = 1;
 let pairs = [];
 let code = "";
-code = `.parent {
-  display: grid;
-  grid-template-columns: repeat(${columns}, 1fr);
-  grid-template-rows: repeat(${rows}, 1fr);
-  grid-column-gap: ${columnsGap}px;
-  grid-row-gap: ${rowsGap}px;
-}\n`;
 
 function createMainDiv() {
   mainDiv.innerHTML = "";
+  code = `.parent {
+    display: grid;
+    grid-template-columns: repeat(${columns}, 1fr);
+    grid-template-rows: repeat(${rows}, 1fr);
+    grid-column-gap: ${columnsGap}px;
+    grid-row-gap: ${rowsGap}px;
+  }\n`;
   numDivs = 1;
   columns = parseInt(document.getElementById("columnsInput").value);
   rows = parseInt(document.getElementById("rowsInput").value);
@@ -84,10 +84,12 @@ function getDivsToColor() {
       pairs.push([i, j]);
     }
   }
+  code += `.div${numDivs} {
+    grid-area: ${firstDivToColor[0] + 1} / ${firstDivToColor[1] + 1} / ${
+    lastDivToColor[0] + 2
+  } / ${lastDivToColor[1] + 2};
+}\n`;
   numDivs++;
-  code += `.div${numDivs} {\n grid-area: ${firstDivToColor[0] + 1} / ${
-    firstDivToColor[1] + 1
-  } / ${lastDivToColor[0] + 2} / ${lastDivToColor[1] + 2}; }\n`;
   colorDivsSelected();
 }
 
@@ -107,10 +109,7 @@ function colorDivsSelected() {
 function getGridsCode() {
   const codeP = document.getElementById("codeP");
   popup.style.display = "block";
-  codeP.innerHTML = code.replace(
-    /\n/g,
-    "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-  );
+  codeP.innerHTML = code;
 }
 
 function closePopup() {
