@@ -9,20 +9,24 @@ let rowsGap = parseInt(document.getElementById("rowsGapInput").value);
 let firstDivToColor;
 let lastDivToColor;
 
-let numDivs = 0;
+let numDivs = 1;
 let pairs = [];
 let code = "";
 code = `.parent {
-    display: grid;
-    grid-template-columns: repeat(${columns}, 1fr);
-    grid-template-rows: repeat(${rows}, 1fr);
-    grid-column-gap: ${columnsGap}px;
-    grid-row-gap: ${rowsGap}px;
+  display: grid;
+  grid-template-columns: repeat(${columns}, 1fr);
+  grid-template-rows: repeat(${rows}, 1fr);
+  grid-column-gap: ${columnsGap}px;
+  grid-row-gap: ${rowsGap}px;
 }\n`;
-
 
 function createMainDiv() {
   mainDiv.innerHTML = "";
+  numDivs = 1;
+  columns = parseInt(document.getElementById("columnsInput").value);
+  rows = parseInt(document.getElementById("rowsInput").value);
+  columnsGap = parseInt(document.getElementById("columnsGapInput").value);
+  rowsGap = parseInt(document.getElementById("rowsGapInput").value);
   for (let j = 0; j < rows; j++) {
     for (let i = 0; i < columns; i++) {
       let div = document.createElement("div");
@@ -66,12 +70,14 @@ window.onload = function () {
 };
 
 function getDivsToColor() {
-    let { maxX, minX } = firstDivToColor[0] > lastDivToColor[0]
-    ? { maxX: firstDivToColor[0], minX: lastDivToColor[0] }
-    : { maxX: lastDivToColor[0], minX: firstDivToColor[0] };
-    let { maxY, minY } = firstDivToColor[1] > lastDivToColor[1]
-    ? { maxY: firstDivToColor[1], minY: lastDivToColor[1] }
-    : { maxY: lastDivToColor[1], minY: firstDivToColor[1] };
+  let { maxX, minX } =
+    firstDivToColor[0] > lastDivToColor[0]
+      ? { maxX: firstDivToColor[0], minX: lastDivToColor[0] }
+      : { maxX: lastDivToColor[0], minX: firstDivToColor[0] };
+  let { maxY, minY } =
+    firstDivToColor[1] > lastDivToColor[1]
+      ? { maxY: firstDivToColor[1], minY: lastDivToColor[1] }
+      : { maxY: lastDivToColor[1], minY: firstDivToColor[1] };
 
   for (let i = minX; i <= maxX; i++) {
     for (let j = minY; j <= maxY; j++) {
@@ -89,7 +95,7 @@ function colorDivsSelected() {
   const color = `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(
     Math.random() * 256
   )}, ${Math.floor(Math.random() * 256)}, 0.5)`;
-  
+
   for (let i = 0; i < pairs.length; i++) {
     const divToColor = document.getElementById(
       `div${pairs[i][0]}${pairs[i][1]}`
