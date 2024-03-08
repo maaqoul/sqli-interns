@@ -103,7 +103,7 @@ function setCssCode(){
         
         keySpan.setAttribute('class', 'content-key');
         contSpan.setAttribute('class', 'content-value');
-        keySpan.textContent = item;
+        keySpan.innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp;' + item;
         contSpan.textContent = gridData[item];
         
         cssContent.append(document.createElement('br'), keySpan, ': ', contSpan);
@@ -135,10 +135,14 @@ function setHtmlCode(){
     htmlContent.append('<div ', divClass, '>', document.createElement('br'));
     for (let item in gridArea){
         let divItem = document.createElement('span');
+        let span = document.createElement('span');
+
         divItem.setAttribute('class', 'content-value');
-        
+        span.innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp;';
         divItem.textContent = `class="${item}"`;
-        htmlContent.append('<div ', divItem, '> </div>', document.createElement('br'));
+
+        span.append('<div ', divItem, '> </div>', document.createElement('br'));
+        htmlContent.append(span);
     }    
     htmlContent.append('</div>');
 }
