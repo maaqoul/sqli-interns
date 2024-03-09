@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Exercice</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <button id="mode">Change mode</button>
+    <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <!-- Linear gradient for the sky -->
+            <linearGradient id="daySkyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:rgb(135,206,235); stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgb(25,25,112); stop-opacity:1" />
+
+            </linearGradient>
+            <linearGradient id="nightSkyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:rgb(25,25,112); stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgb(135,206,235); stop-opacity:1" />
+            </linearGradient>
+
+            <!-- Linear gradient for the mountain -->
+            <linearGradient id="dayMontainGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:rgb(100,100,100); stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgb(200,200,200); stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="nightMontainGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:rgb(50,50,50); stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgb(100,100,100); stop-opacity:1" />
+            </linearGradient>
+            <!-- Montain -->
+            <symbol id="mountain" viewBox="0 0 600 400">
+                <path class="montain" d="M0,400 L200,200 L400,400 Z" fill="url(#dayMontainGradient)" />
+            </symbol>
+
+            <!-- Tree -->
+            <symbol id="tree" viewBox="0 0 16 16">
+                <path class="tree"
+                    d="M8.416.223a.5.5 0 0 0-.832 0l-3 4.5A.5.5 0 0 0 5 5.5h.098L3.076 8.735A.5.5 0 0 0 3.5 9.5h.191l-1.638 3.276a.5.5 0 0 0 .447.724H7V16h2v-2.5h4.5a.5.5 0 0 0 .447-.724L12.31 9.5h.191a.5.5 0 0 0 .424-.765L10.902 5.5H11a.5.5 0 0 0 .416-.777l-3-4.5z" />
+            </symbol>
+        </defs>
+
+        <!-- Sky -->
+        <rect class="sky" width="100%" height="100%" fill="url(#daySkyGradient)" />
+
+        <!-- Sun -->
+        <circle class="sun" cx="500" cy="100" r="60" fill="yellow" />
+
+        <!-- Moon -->
+        <circle class="moon" cx="-500" cy="100" r="60" fill="#F6F1D5" />
+
+        <rect x="0" y="400" width="800" height="200" fill="#6495ED" />
+
+        <!-- Mountains -->
+        <use xlink:href="#mountain" x="500" y="-160" />
+        <use xlink:href="#mountain" x="350" y="-160" />
+
+        <use xlink:href="#mountain" x="-100" y="-160" />
+        <use xlink:href="#mountain" x="-250" y="-160" />
+
+        <!-- Trees -->
+        <use class="tree1" xlink:href="#tree" x="-50" y="400" width="200" height="200" fill="green" />
+        <use class="tree2" xlink:href="#tree" x="70" y="400" width="200" height="200" fill="#228B22" />
+        <use class="tree3" xlink:href="#tree" x="180" y="400" width="200" height="200" fill="green" />
+
+        <use class="tree4" xlink:href="#tree" x="500" y="400" width="200" height="200" fill="#228B22" />
+        <use class="tree5" xlink:href="#tree" x="600" y="400" width="200" height="200" fill="green" />
+    </svg>
+
+    <script>
+        var lightMode = true;
+        document.getElementById('mode').addEventListener('click', function () {
+            lightMode = !lightMode;
+            console.log(lightMode);
+
+            document.querySelector('.sky').style.fill = lightMode ? "url(#daySkyGradient)" : "url(#nightSkyGradient)";
+
+            document.querySelector('.montain').style.fill = lightMode ? "url(#dayMontainGradient)" : "url(#nightMontainGradient)";
+
+            document.querySelector('.tree1').style.fill = lightMode ? "green" : "black";
+            document.querySelector('.tree2').style.fill = lightMode ? "#228B22" : "#353535";
+            document.querySelector('.tree3').style.fill = lightMode ? "green" : "black";
+            document.querySelector('.tree4').style.fill = lightMode ? "#228B22" : "#353535";
+            document.querySelector('.tree5').style.fill = lightMode ? "green" : "black";
+
+            document.querySelector('.sun').setAttribute('cx', lightMode ? 500 : -500);
+
+            document.querySelector('.moon').setAttribute('cx', lightMode ? -500 : 500);
+        })
+    </script>
+</body>
+
+</html>
