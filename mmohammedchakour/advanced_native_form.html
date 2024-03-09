@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <title>Document</title>
+</head>
+
+<body>
+    <form class="container mt-5 col-6" id="foooorm">
+        <h2 class="text-center mx-6">Personal Infos</h2>
+        <hr />
+        <div class="form-group row md-4">
+            <label for="name" class="col-4 col-form-label">Full Name</label>
+            <div class="col-8">
+                <input id="name" name="name" type="text" class="form-control" pattern="[a-zA-Z]{3,18}( [a-zA-Z]{3,18})?"
+                    required />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="email" class="col-4 col-form-label">Email</label>
+            <div class="col-8">
+                <input id="email" name="email" type="email" class="form-control" required />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="bdate" class="col-4 col-form-label">Date of birth</label>
+            <div class="col-8">
+                <input id="bdate" name="bdate" type="date" class="form-control" required />
+            </div>
+        </div>
+        <hr class="row" />
+        <h2 class="text-center mx-2">Preferences</h2>
+        <hr />
+        <div class="form-group row">
+            <label for="attendee" class="col-4 col-form-label">Type of attendee :</label>
+            <div class="col-8">
+                <select name="attendee" id="attendee" class="form-control" required>
+                    <option value="Student">Student</option>
+                    <option value="Intern">Intern</option>
+                    <option value="Hobbyist">Hobbyist</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="interest" class="col-4 col-form-label">Areas of interest :</label>
+            <div class="row d-flex justify-content-center mt-2 ml-4">
+                <div class="form-check mx-2">
+                    <input class="form-check-input" type="checkbox" value="WebDev" id="WebDev" />
+                    <label class="form-check-label"> WebDev </label>
+                </div>
+                <div class="form-check mx-2">
+                    <input class="form-check-input" type="checkbox" value="MobileDev" id="MobileDev" />
+                    <label class="form-check-label" for> MobileDev </label>
+                </div>
+                <div class="form-check mx-2">
+                    <input class="form-check-input" type="checkbox" value="AI/ML" id="AI/ML" />
+                    <label class="form-check-label"> AI/ML </label>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <h2 class="text-center mx-6">Payment Details</h2>
+        <hr />
+        <div class="form-group row md-4">
+            <label for="card" class="col-4 col-form-label">Credit Card Number :</label>
+            <div class="col-8">
+                <input id="card" name="card" type="text" pattern="\b(?:\d{4}[ ]?){4}\b" class="form-control"
+                    required="required" />
+            </div>
+        </div>
+        <div class="form-group row md-4">
+            <label for="cvv" class="col-4 col-form-label">CVV</label>
+            <div class="col-8">
+                <input id="cvv" name="cvv" type="text" pattern="\d{3}" class="form-control" required="required" />
+            </div>
+        </div>
+        <div class="form-group row md-4">
+            <label for="exp" class="col-4 col-form-label">Date of Expiry:</label>
+            <div class="col-8">
+                <input id="exp" name="exp" type="date" class="form-control" required="required" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="offset-4 col-8">
+                <button name="submit" type="submit" class="btn btn-primary">
+                    Submit
+                </button>
+            </div>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                var form = document.querySelector("form");
+                form.addEventListener("submit", function (event) {
+
+                    if (!form.checkValidity()) {
+                        event.preventDefault(); // Prevent form submission
+                        // Check each input and show custom error messages
+                        var inputs = form.querySelectorAll("input");
+                        inputs.forEach(function (input) {
+                            if (!input.validity.valid) {
+                                input.setCustomValidity(""); // Reset custom validity
+                                if (input.validity.valueMissing) {
+                                    input.setCustomValidity("Please fill out this field.");
+                                } else if (input.validity.patternMismatch) {
+                                    input.setCustomValidity(input.title);
+                                }
+                                // Show the custom validity message
+                                input.reportValidity();
+                            } else {
+                                input.setCustomValidity(""); // Reset custom validity to remove message
+                            }
+                        });
+                    }
+                    const data = new FormData(form);
+                    for (const value of data.values()) {
+                        console.log(value);
+                    }
+                }, false);
+            });
+        </script>
+    </form>
+</body>
+
+</html>
