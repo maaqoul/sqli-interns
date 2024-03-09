@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
+        <title>GridGen</title>
+    </head>
+
+    <body>
+        <div id="app">
+            
+            <header class="gridGen">
+                <nav>
+                    <p><span class="frword">Grid</span><span class="lsword">Gen</span></p>
+                </nav>
+            </header>
+
+            <main class="gridConf">
+                <aside class="control">
+                    <label for="columns">Columns</label>
+                    <input id="columns" type="number" class="control-inputs" required/>
+                    <label for="rows">Rows</label>
+                    <input id="rows" type="number" class="control-inputs" required/>
+                    <label for="column-gap">Column Gap</label>
+                    <input id="column-gap" type="number" class="control-inputs" required/>
+                    <label for="row-gap">Row Gap</label>
+                    <input id="row-gap" type="number" class="control-inputs" required/>
+                    <button class="btn" onclick="openPopup()"><i class="animation"></i>Get CSS<i class="animation"></i></button>
+                </aside>
+                <div id="gridcontainer">
+                    <section id="gridMap" class="gridMap initial-gridMap">
+                    </section>
+                </div>
+            </main>
+        </div>
+        <div id="popContainer" class="popContainer">
+            <div class="popup" id="popup">
+            <div id="text-area" class="text-area" style="color: aliceblue; font-family: 'Montserrat';">
+            </div>
+            <button class="btn-close" type="button" onclick="closePopup()">OK</button>
+            </div>
+        </div>
+    </body>
+    
+    <script src="./js/main.js" defer></script>    
+    <script src="./js/createGrid.js" defer></script>
+    <script src="./js/fillUpdateGrid.js" defer></script>
+    <script src="./js/selectedAreaProp.js" defer></script>
+    <script src="./js/setupSelection.js" defer></script>
+    <script src="./js/createDynamicStyle.js" defer></script>
+    <script src="./js/getRandomColor.js" defer></script>
+    <script src="./js/Popup.js" defer></script>
+</html>
