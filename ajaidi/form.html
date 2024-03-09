@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="">
+      <div>
+        <label for="name">name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          pattern="[a-zA-Z]{3,18}( [a-zA-Z]{3,18})?"
+          required
+        />
+      </div>
+      <div>
+        <label for="email">email</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+      <div>
+        <label for="birth">birthday</label>
+        <input type="date" id="birth" name="birth" required />
+      </div>
+      <div>
+        <label for="type">type</label>
+        <select name="type" id="type" required>
+          <option value="student">student</option>
+          <option value="intern">intern</option>
+        </select>
+        <label for="c">c</label>
+        <input type="checkbox" value="c" id="c" />
+        <label for="cpp">cpp</label
+        ><input type="checkbox" value="cpp" id="cpp" />
+        <label for="rust">rust</label>
+        <input type="checkbox" value="rust" id="rust" />
+      </div>
+      <div>
+        <div>
+          <label for="card-number">card number</label>
+          <input
+            type="text"
+            id="card-number"
+            name="card-number"
+            pattern="^\d{4}( \d{4}){3}$"
+            required
+          />
+        </div>
+        <div>
+          <label for="card-expire">card expire</label>
+          <input type="month" id="card-expire" name="card-expire" required />
+        </div>
+        <div>
+          <label for="ccv">CCV</label>
+          <input
+            type="number"
+            id="ccv"
+            name="ccv"
+            pattern="^[1-9]{3}$"
+            required
+          />
+        </div>
+      </div>
+
+      <input type="submit" value="submit" />
+    </form>
+  </body>
+  <script defer>
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      const inputs = form.querySelectorAll(
+        'input:not([type="submit"]), select'
+      );
+
+      let checkedCount = 0;
+
+      checkboxes.forEach((cb) => {
+        if (cb.checked) {
+          checkedCount++;
+        }
+      });
+
+      if (checkedCount === 0) {
+        alert('Please check at least one checkbox before submitting the form.');
+        return;
+      }
+      inputs.forEach((input) => {
+        console.log(`${input.id} => ${input.value}`);
+        input.value = '';
+      });
+      
+      checkboxes.forEach((cb) => {
+        cb.checked = false
+      });
+    });
+  </script>
+</html>
