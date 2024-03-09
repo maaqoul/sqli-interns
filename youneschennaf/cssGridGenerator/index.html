@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+    <title>CSS Grid Generator</title>
+  </head>
+  <body>
+    <header>
+      <h1>CSS Grid Generator</h1>
+    </header>
+    <section class="container">
+      <main class="main">
+        <div class="gridLayout"></div>
+      </main>
+      <aside class="asideSettings">
+        <form id="formSettings" action="#">
+          <fieldset>
+            <label for="columns">Columns</label>
+            <input name="columns" type="number" min="1" value="5" />
+          </fieldset>
+          <fieldset>
+            <label for="rows">Rows</label>
+            <input name="rows" type="number" min="1" value="5" />
+          </fieldset>
+          <fieldset>
+            <label for="columnGap">Column Gap</label>
+            <input name="columnGap" type="number" min="0" value="0" />
+          </fieldset>
+          <fieldset>
+            <label for="rowGap">Row Gap</label>
+            <input name="rowGap" type="number" min="0" value="0" />
+          </fieldset>
+          <input type="submit" value="Generate Grid" />
+        </form>
+        <button class="showCode">Show Code</button>
+        <button class="resetGrid">Reset Grid</button>
+      </aside>
+      <dialog>
+        <div class="dialogDiv">
+          <header>
+            <h2>Your Grid Code</h2>
+          </header>
+          <section class="sectionCode">
+            <div class="codeDiv"></div>
+            <button class="showHtmlCss" data-current="css">Show HTML</button>
+            <button class="doneBtn">Done</button>
+          </section>
+        </div>
+      </dialog>
+    </section>
+  </body>
+</html>

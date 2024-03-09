@@ -1,0 +1,179 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto Mono", "Courier New";
+}
+
+body {
+  background: radial-gradient(ellipse at center, #192d38 0, #211f2f 100%);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  margin: 20px;
+  color: #fff;
+}
+
+fieldset {
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 10px;
+  width: 60%;
+  color: #fff;
+}
+
+.main {
+  display: flex;
+  width: 70%;
+  height: 100%;
+}
+
+dialog {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 70vw;
+  height: 70vh;
+  transform: translate(-50%, -50%);
+  background-color: #192d38;
+  padding: 20px;
+  border: 2px solid #000;
+  border-radius: 5px;
+  outline: none;
+}
+
+.dialogDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+dialog h2 {
+  color: #fff;
+}
+
+input {
+  border-radius: 5px;
+  padding: 5px;
+  width: 70%;
+  margin: 5px;
+}
+
+.container {
+  display: flex;
+  width: 80vw;
+  height: 80vh;
+}
+
+.asideSettings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#formSettings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.gridLayout {
+  border: 2px solid #1b9952;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  background: radial-gradient(ellipse at center, #192d38 0, #211f2f 100%);
+}
+
+.box {
+  border: 1px dotted white;
+  position: relative;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='8' height='8' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 0h1L0 6V5zm1 5v1H5z' fill='%239C92AC' fill-opacity='.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+.box > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.sectionCode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.codeDiv {
+  width: 100%;
+  min-height: 200px;
+  overflow-y: auto;
+  color: #fff;
+  margin: 20px;
+  border: 1px solid #08ffbd;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.sp {
+  margin-left: 20px;
+}
+
+input[type="submit"],
+button {
+  outline: none;
+  border: 1px solid #08ffbd;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 10px;
+  background: transparent;
+  color: #08ffbd;
+  transition: all 0.3s;
+  min-width: 30%;
+  max-width: 200px;
+}
+
+input[type="submit"]:hover,
+button:hover {
+  color: black;
+  background-color: #08ffbd;
+}
+
+@media (max-width: 650px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 80vh;
+  }
+  .main {
+    width: 100%;
+  }
+  fieldset {
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 2px;
+    width: 70%;
+  }
+  #formSettings {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+    justify-content: center;
+    align-items: center;
+    font-size: small;
+  }
+}
