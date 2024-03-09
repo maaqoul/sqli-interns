@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./gen.css">
+    <title>Grid generator</title>
+</head>
+<body>
+    <main>
+        <section class="gridBoard-container">
+            <section class="gridBoard"></section>
+            <section class="gridShowcase"></section>
+        </section>
+        <section class="form-container">
+            <h1 class="title">Grid Generator</h1>
+            <form id="form">
+                <div class="inputs">
+                    <label for="cols">Columns</label>
+                    <input type="number" id="cols" min="1" max="5" value="5">
+                </div>
+                <div class="inputs">
+                    <label for="rows">Rows</label>
+                    <input type="number" id="rows" min="1" max="5" value="5">
+                </div>
+                <div class="inputs">
+                    <label for="colGaps">Column gaps (in px)</label>
+                    <input type="number" id="colGaps" min="0" max="50" value="0">
+                </div>
+                <div class="inputs">
+                    <label for="rowGaps">Row gaps (in px)</label>
+                    <input type="number" id="rowGaps" min="0" max="50" value="0">
+                </div>
+                <div class="buttons">
+                    <button type="submit">Generate code</button>
+                    <button type="reset">Reset board</button>
+                </div>
+            </form>
+            <section id="panel"></section>
+        </section>
+        <aside class="genCode">
+            <div class="genCodePanel">
+                <div class="actions">
+                    <button id="codeSwitch"></button>
+                </div>
+                <div class="codeInnerPanel">
+                    <h1></h1>
+                    <p id="code" ></p>
+                </div>
+                <div class="actions">
+                    <button id="codeClose">Close</button>
+                    <button id="codeCopy">Copy</button>
+                </div>
+            </div>
+        </aside>
+    </main>
+    <footer>
+        <p>Made with <span style="color: red;">❤</span> at SQLI</p>
+    </footer>
+
+    <script src="./gen.js"></script>
+</body>
+</html>

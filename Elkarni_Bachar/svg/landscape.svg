@@ -42,13 +42,6 @@
             d="M0 520 C 40 480, 80 520, 120 500 S 200 520, 240 500 S 320 520, 360 500 S 440 520, 480 500 S 560 520, 600 500 S 680 480, 720 520 S 760 480, 800 520 L800 600 L0 600 Z"
             fill="#ADD8E6"
           />
-          <!-- Wavy lines representing water movement -->
-          <path
-            d="M0 560 Q 50 490, 100 530 T 200 540 T 300 520 T 400 550 T 490 540 T 600 520 T 700 560 T950 480"
-            stroke="#FFFFFF"
-            stroke-width="8"
-            fill="none"
-          />
         </g>
       </defs>
       <!-- Sky -->
