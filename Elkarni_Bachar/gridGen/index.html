@@ -36,16 +36,16 @@
                     <button type="reset">Reset board</button>
                 </div>
             </form>
-            <section id="panel"></section>
+            <section id="referencePanel"></section>
         </section>
-        <aside class="genCode">
-            <div class="genCodePanel">
+        <aside class="smokeScreen">
+            <div class="panel">
                 <div class="actions">
                     <button id="codeSwitch"></button>
                 </div>
-                <div class="codeInnerPanel">
+                <div class="innerPanel">
                     <h1></h1>
-                    <p id="code" ></p>
+                    <p id="code"></p>
                 </div>
                 <div class="actions">
                     <button id="codeClose">Close</button>
@@ -58,6 +58,10 @@
         <p>Made with <span style="color: red;">❤</span> at SQLI</p>
     </footer>
 
-    <script src="./gen.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/gridsLogic.js"></script>
+    <script src="./js/codeGeneration.js"></script>
+    <script src="./js/inputsControl.js"></script>
+    <script src="./js/gen.js"></script>
 </body>
 </html>

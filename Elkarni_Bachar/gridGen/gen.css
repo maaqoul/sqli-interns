@@ -24,6 +24,7 @@ main{
     grid-template-columns: repeat(4,1fr);
     column-gap: 30px;
     margin-inline: auto;
+    padding-top: 5px;
 }
 
 /* ================================================ */
@@ -87,16 +88,16 @@ main{
     padding-block: 30px;
 }
 
-#panel {
+#referencePanel {
     border: 5px solid black;
     border-radius: 15px;
     height: fit-content;
     padding-inline: 20px;
     padding-block: 10px;
     overflow: scroll;
-    height: 200px;
     scrollbar-width: none;
     display: none;
+    max-height: 100px;
 }
 
 .element{
@@ -156,7 +157,7 @@ main{
 
 /* ================================================ */
 
-.genCode{
+.smokeScreen{
     position: absolute;
     background: rgba(128, 128, 128, 0.8);
     top: 0;
@@ -170,7 +171,7 @@ main{
     z-index: 20;
 }
 
-.genCodePanel{
+.panel{
     width: 30%;
     height: 60%;
     background: white;
@@ -183,7 +184,7 @@ main{
     padding-inline: 20px;
 }
 
-.codeInnerPanel{
+.innerPanel{
     width: 80%;
     height: 50%;
     border: 5px solid black;
@@ -199,7 +200,7 @@ main{
     scrollbar-width: none;
 }
 
-.codeInnerPanel > h1 {
+.innerPanel > h1 {
     text-align: center;
     margin: 20px 0 20px 0;
 }
