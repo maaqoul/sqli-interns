@@ -20,8 +20,9 @@ const genCode = () => {
 
 const genCssCode = () => {
     codeTextPanel.innerHTML = ""
-    let cssBaseTemplate = `display: grid;\ngrid-template-columns: ${showcase.style.gridTemplateColumns || "repeat(5,1fr)"};\ngrid-template-rows: ${showcase.style.gridTemplateRows || "repeat(5,1fr)"};\n`;
-    let css = ""
+    let css = `display: grid;\ngrid-template-columns: ${showcase.style.gridTemplateColumns || "repeat(5,1fr)"};\ngrid-template-rows: ${showcase.style.gridTemplateRows || "repeat(5,1fr)"};\n`;
+    css += showcase.style.columnGap ? `column-gap: ${showcase.style.columnGap};\n`:"";
+    css += showcase.style.rowGap ? `row-gap: ${showcase.style.rowGap};\n` : "";
     const GridChildren = showcase.childNodes;
     GridChildren.forEach((child) => {
         css +=
@@ -29,7 +30,7 @@ const genCssCode = () => {
     grid-area: ${child.style.gridArea};
 }`);
     })
-    codeTextPanel.innerHTML = `<pre>${cssBaseTemplate + css}</pre>`;
+    codeTextPanel.innerHTML = `<pre>${css}</pre>`;
 }
 
 const genHTMLCode = () => {
