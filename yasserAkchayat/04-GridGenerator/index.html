@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+</head>
+<body>
+    <header>
+        <h2>Css grid generator ^_^</h2>
+    </header>
+    <main>
+        <section id="section1">
+            <h3>Grid</h3>
+            <div id="grid">
+                <div class="grid-item">1</div>
+                <div class="grid-item">2</div>
+                <div class="grid-item">3</div>
+                <div class="grid-item">4</div>
+                <div class="grid-item">5</div>
+                <div class="grid-item">6</div>
+                <div class="grid-item">7</div>
+                <div class="grid-item">8</div>
+                <div class="grid-item">9</div>
+                <div class="grid-item">10</div>
+                <div class="grid-item">11</div>
+                <div class="grid-item">12</div>
+                <div class="grid-item">13</div>
+                <div class="grid-item">14</div>
+                <div class="grid-item">15</div>
+                <div class="grid-item">16</div>
+                <div class="grid-item">17</div>
+                <div class="grid-item">18</div>
+                <div class="grid-item">19</div>
+                <div class="grid-item">20</div>
+                <div class="grid-item">21</div>
+                <div class="grid-item">22</div>
+                <div class="grid-item">23</div>
+                <div class="grid-item">24</div>
+                <div class="grid-item">25</div>
+
+            </div>
+        </section>
+        <aside>
+            <h3>Controls</h3>
+            <form id="controls">
+                <label for="rows">Rows:</label>
+                <input type="number" id="rows" name="rows" min="1" max="10" value="5">
+                <label for="columns">Columns:</label>
+                <input type="number" id="columns" name="columns" min="1" max="10" value="5">
+                <label for="columnGap">Column Gap (px):</label>
+                <input type="number" id="columnGap" name="columnGap" min="0" max="50" value="0">
+                <label for="rowGap">Row Gap (px):</label>
+                <input type="number" id="rowGap" name="rowGap" min="0" max="50" value="0">
+            </form>
+        </aside>
+        <section id="groups">
+                <header>
+                    <h3>Groups</h3>
+                </header>
+                <form id="groupForm">
+                    <button type="button" id="addGroupButton">Add group</button>
+                    <button type="submit">Highlight</button>
+                </form>
+        </section>
+        <section id="showCode"> 
+            <button id="displayCode">Display the Code</button>
+        </section>
+    </main>
+    
+    <section id="GenCssContainer">
+        <div id="genCss">
+            <header>
+                <h3> Generated CSS:</h3>
+            </header>
+            <pre >
+                <code id="generatedCss">
+                    
+                </code>
+                
+            </pre>
+
+            <footer>
+                <button type="submit" id="showHtml"> Show Html</button>
+            </footer>
+        </div>
+        <div id="genHtml">
+            <header>
+                <h3> Generated Html:</h3>
+            </header>
+            <pre>
+                <code id="generatedHtml">
+
+                </code>
+            </pre>
+
+            <footer>
+                <button type="submit" id="showCss"> Show Css</button>
+            </footer>
+        </div>
+        <button type="submit" id="done">Done</button>
+    </section>
+    
+<script src="script.js"></script>
+</body>
+</html>
+
+
+    
+            
