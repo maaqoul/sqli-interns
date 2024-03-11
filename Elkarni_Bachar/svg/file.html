@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SVG landscape</title>
+    <style>
+      body {
+        display: grid;
+        row-gap: 10px;
+        justify-items: center;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        border: none;
+        border-radius: 10px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        background-color: #387096;
+        color: #ffffff;
+      }
+
+      button:hover {
+        background-color: #1e8cd6;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button onclick="changeTheme()">Change theme</button>
+    <object id="svgObject" type="image/svg+xml" data="./landscape.svg"></object>
+    <script src="./toggle.js"></script>
+  </body>
+</html>

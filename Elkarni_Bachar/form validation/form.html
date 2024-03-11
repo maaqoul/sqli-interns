@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="myForm">
+        <section>
+            <h1>Personal Details</h1>
+            <section>
+                <label for="name">Full Name</label>
+                <input class="input" type="text" name="name" id="name" required>
+            </section>
+            <section>
+                <label for="email">Email Address</label>
+                <input class="input" type="email" name="email" id="email" required>
+            </section>
+            <section>
+                <label for="DoB">Date of birth</label>
+                <input class="input" type="date" name="DoB" id="DoB" required>
+            </section>
+        </section>
+        <hr>
+        <section>
+            <h1>Preferences</h1>
+            <section>
+                <label for="type">Type</label>
+                <select class="input" name="type" id="type" required>
+                    <option value="professional">Professional</option>
+                    <option value="intern">Intern</option>
+                    <option value="student">Student</option>
+                </select>
+            </section>
+            <section>
+                <p>
+                    Areas of interest: <small id="err" style="color: red;"></small>
+                </p>
+                
+                <input class="checks" type="checkbox" name="interest" id="type1">
+                <label for="type1">web dev</label>
+                <input class="checks" type="checkbox" name="interest" id="type2">
+                <label for="type2">mobile dev</label>
+                <input class="checks" type="checkbox" name="interest" id="type3">
+                <label for="type3">cloud computing</label>
+                <input class="checks" type="checkbox" name="interest" id="type4">
+                <label for="type4">gaming dev</label>
+            </section>
+        </section>
+        <hr>
+        <section>
+            <h1>Payment details</h1>
+            <label for="num">Credit card number</label>
+            <input class="input" type="text" id="num" name="credit card num" pattern="[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}" title="card number should be 16 digits separated with spaces" placeholder="1234 1234 1234 1234" required>
+            <label for="cvv">CVV</label>
+            <input class="input" type="text" id="cvv" name="cvv" pattern="[0-9]{3}" title="The CVV should be 3 digits" required>
+            <label for="dateExp">Date of expiry</label>
+            <input class="input" type="text" id="dateExp" name="dateExp" pattern="[0-3]{1}[0-9]{1}/[2-3]{1}[0-9]{1}" title="The date should be in the format 01/24" required>
+        </section>
+        <hr>
+        <button type="submit" >Submit</button>
+    </form>
+
+    <script>
+        const form = document.getElementById("myForm");
+        const err = document.getElementById("err");
+        const handleForm = (event) =>{
+            event.preventDefault();
+            err.innerHTML="";
+            const formData = new FormData(form)
+            // checking whether the user checked at least 2 checkboxes
+            let checkedCount = 0
+            formData.forEach(function(value, key) {
+                if (key === 'interest' && value === 'on') {
+                checkedCount++;
+                }
+            });
+            if(checkedCount<2){
+                err.innerHTML="You should at least select 2 options"
+            }
+            else{
+                formData.forEach((key, value)=>{
+                    value != 'interest' && console.log(value + ':' + key);
+                })
+                const checkboxes = document.querySelectorAll(".checks");
+
+                const getLabel = (id) => {
+                    return document.querySelector(`label[for="${id}"]`).innerText
+                }
+                for (const cb of checkboxes) {
+                    if (cb.checked) {
+                        console.log(getLabel(cb.id));
+                    }
+                }
+            }
+        } 
+        form.addEventListener('submit', handleForm);
+    </script>
+</body>
+</html>
