@@ -1,5 +1,5 @@
+"use strict";
 /* *Generates a random color for the bg of divs */
-
 function genRandomColor() {
     const letters = "0123456789ABCDEF";
     let color = "#";
