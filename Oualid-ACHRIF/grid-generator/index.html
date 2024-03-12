@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Grid Generator</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./logo.png" type="image/x-icon" />
+  </head>
+  <body>
+    <header>
+      <img src="./SQLI_DX_LOGO_violet.png" alt="sqli_logo" srcset="" />
+      <div class="title">
+        <h1>
+          <span style="color: #0047ff">CSS</span
+          ><span style="color: #ff7979"> GRID GENERATOR</span>
+        </h1>
+      </div>
+    </header>
+    <main style="width: 100%; max-width: 500px; margin: auto">
+      <div id="generator">
+        <div id="config">
+          <div class="inputs">
+            <label for="columns">Columns</label>
+            <input type="number" id="columns" value="2" min="1" max="10" />
+          </div>
+          <div class="inputs">
+            <label for="rows">Rows</label>
+            <input type="number" id="rows" value="2" min="1" max="8" />
+          </div>
+          <div class="inputs">
+            <label for="gap">Gap (px)</label>
+            <input type="number" id="gap" value="10" min="0" />
+          </div>
+        </div>
+        <div class="btn">
+          <button id="generate" onclick="generate()">Generate</button>
+        </div>
+        <div
+          id="result"
+          style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0"
+        >
+          <div class="grid-items"></div>
+          <div class="grid-items"></div>
+          <div class="grid-items"></div>
+          <div class="grid-items"></div>
+          <div class="grid-items"></div>
+          <div class="grid-items"></div>
+          <div class="grid-items"></div>
+          <div class="grid-items"></div>
+          <div class="grid-items"></div>
+          <div class="grid-items"></div>
+          <div class="grid-items"></div>
+          <div class="grid-items"></div>
+          <div class="grid-items"></div>
+          <div class="grid-items"></div>
+          <div class="grid-items"></div>
+          <div class="grid-items"></div>
+        </div>
+
+        <textarea id="code" readonly></textarea>
+      </div>
+    </main>
+
+    <script src="grid-gen.js"></script>
+  </body>
+</html>

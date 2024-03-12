@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style></style>
+</head>
+
+<body>
+  <button id="toggleDayNight">Toggle Day/Night</button>
+
+  <svg width="800" height="800" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+      <linearGradient id="skyGradient" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stop-color="lightblue" id="skyTopColor" />
+        <stop offset="100%" stop-color="darkblue" id="skyBottomColor" />
+      </linearGradient>
+
+      <linearGradient id="mountainGradientDay" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="60%" stop-color="gray" />
+        <stop offset="100%" stop-color="black" />
+      </linearGradient>
+      <linearGradient id="mountainGradientNight" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="5%" stop-color="gray" />
+        <stop offset="100%" stop-color="black" />
+      </linearGradient>
+
+      <path id="tree" d="M10,30 L30,30 L20,10 z" fill="green" />
+    </defs>
+
+    <rect width="100%" height="50%" fill="url(#skyGradient)" />
+
+    <circle id="sun" cx="700" cy="100" r="50" fill="yellow" />
+    <circle id="moon" cx="700" cy="100" r="45" fill="white" visibility="hidden" />
+
+    <g id="stars" visibility="hidden">
+      <circle cx="100" cy="50" r="2" fill="white" />
+      <circle cx="150" cy="70" r="2" fill="white" />
+      <circle cx="250" cy="10" r="2" fill="white" />
+      <circle cx="350" cy="50" r="2" fill="white" />
+      <circle cx="600" cy="15" r="2" fill="white" />
+      <circle cx="500" cy="20" r="2" fill="white" />
+      <circle cx="450" cy="30" r="2" fill="white" />
+      <circle cx="130" cy="40" r="2" fill="white" />
+      <circle cx="500" cy="66" r="2" fill="white" />
+    </g>
+    <path
+      d="M00 250 L10 50 L201 250 M100 250 L230 50 L500 250 M100 250 L201 100 L500 250 M100 250 L500 100 L800 250 M100 250 L700 100 L1000 250 Z "
+      fill="url(#mountainGradientDay)" id="montain" />
+
+    <rect x="0" y="250" width="100%" height="150" fill="#32CD32" id="green" />
+    <rect x="25%" y="250" width="50%" height="150" fill="#32CD32" id="green2" />
+
+    <polygon points="260,250 500,250 624,400 150,400" fill="#4398e6" id="water" />
+
+    <g class="tree">
+      <rect x="90" y="330" width="20" height="40" fill="#8B4513" />
+      <circle cx="100" cy="310" r="30" fill="#228B22" />
+      <rect x="150" y="280" width="20" height="40" fill="#8B4513" />
+      <circle cx="160" cy="260" r="30" fill="#228B22" />
+
+      <rect x="650" y="330" width="20" height="40" fill="#8B4513" />
+      <circle cx="660" cy="310" r="30" fill="#228B22" />
+      <rect x="590" y="280" width="20" height="40" fill="#8B4513" />
+      <circle cx="600" cy="260" r="30" fill="#228B22" />
+    </g>
+
+    <g fill="#effdff" id="clouds" visibility="visible">
+      <circle cx="200" cy="100" r="20">
+        <animateTransform attributeName="transform" type="translate" from="0" to="200" begin="0s" dur="10s"
+          repeatCount="indefinite" />
+      </circle>
+      <circle cx="220" cy="120" r="20">
+        <animateTransform attributeName="transform" type="translate" from="0" to="200" begin="0s" dur="10s"
+          repeatCount="indefinite" />
+      </circle>
+      <circle cx="240" cy="100" r="20">
+        <animateTransform attributeName="transform" type="translate" from="0" to="200" begin="0s" dur="10s"
+          repeatCount="indefinite" />
+      </circle>
+      <circle cx="260" cy="120" r="20">
+        <animateTransform attributeName="transform" type="translate" from="0" to="200" begin="0s" dur="10s"
+          repeatCount="indefinite" />
+      </circle>
+      <circle cx="280" cy="100" r="20">
+        <animateTransform attributeName="transform" type="translate" from="0" to="200" begin="0s" dur="10s"
+          repeatCount="indefinite" />
+      </circle>
+      <circle cx="500" cy="110" r="20">
+        <animateTransform attributeName="transform" type="translate" from="0" to="200" begin="0s" dur="10s"
+          repeatCount="indefinite" />
+      </circle>
+      <circle cx="520" cy="120" r="20">
+        <animateTransform attributeName="transform" type="translate" from="0" to="200" begin="0s" dur="10s"
+          repeatCount="indefinite" />
+      </circle>
+      <circle cx="540" cy="100" r="20">
+        <animateTransform attributeName="transform" type="translate" from="0" to="200" begin="0s" dur="10s"
+          repeatCount="indefinite" />
+      </circle>
+      <circle cx="560" cy="120" r="20">
+        <animateTransform attributeName="transform" type="translate" from="0" to="200" begin="0s" dur="10s"
+          repeatCount="indefinite" />
+      </circle>
+      <circle cx="580" cy="120" r="20">
+        <animateTransform attributeName="transform" type="translate" from="0" to="200" begin="0s" dur="10s"
+          repeatCount="indefinite" />
+      </circle>
+      <circle cx="110" cy="110" r="15">
+        <animateTransform attributeName="transform" type="translate" from="0" to="100" begin="0s" dur="10s"
+          repeatCount="indefinite" />
+      </circle>
+      <circle cx="120" cy="120" r="15">
+        <animateTransform attributeName="transform" type="translate" from="0" to="100" begin="0s" dur="10s"
+          repeatCount="indefinite" />
+      </circle>
+      <circle cx="130" cy="100" r="15">
+        <animateTransform attributeName="transform" type="translate" from="0" to="100" begin="0s" dur="10s"
+          repeatCount="indefinite" />
+      </circle>
+      <circle cx="140" cy="120" r="15">
+        <animateTransform attributeName="transform" type="translate" from="0" to="100" begin="0s" dur="10s"
+          repeatCount="indefinite" />
+      </circle>
+    </g>
+
+  </svg>
+
+  <script>
+    let isDay = true;
+
+    document
+      .getElementById("toggleDayNight")
+      .addEventListener("click", function () {
+        isDay = !isDay;
+
+        document.getElementById("sun").style.visibility = isDay
+          ? "visible"
+          : "hidden";
+
+        document.getElementById("moon").style.visibility = isDay
+          ? "hidden"
+          : "visible";
+
+        document.getElementById("stars").style.visibility = isDay
+          ? "hidden"
+          : "visible";
+
+        document.getElementById("clouds").style.visibility = isDay
+          ? "visible"
+          : "hidden";
+
+        document
+          .getElementById("skyTopColor")
+          .setAttribute("stop-color", isDay ? "lightblue" : "#020024");
+        document
+          .getElementById("skyBottomColor")
+          .setAttribute("stop-color", isDay ? "darkblue" : "#090979");
+
+        document
+          .getElementById("montain").style.fill = isDay ? "url(#mountainGradientDay)" : "url(#mountainGradientNight)";
+
+
+        document
+          .getElementById("green").style.fill = isDay ? "#32CD32" : "#737373";
+        document
+          .getElementById("green2").style.fill = isDay ? "#32CD32" : "#737373";
+
+        document.getElementById("water").style.fill = isDay ? "#4398e6" : "#2F3F8C";
+
+      });
+  </script>
+</body>
+
+</html>

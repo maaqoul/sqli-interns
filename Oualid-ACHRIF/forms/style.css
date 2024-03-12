@@ -1,0 +1,25 @@
+form {
+  width: 50%;
+  margin: auto;
+}
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+fieldset {
+  margin-bottom: 10px;
+}
+button {
+  color: rgb(0, 0, 0);
+  padding: 10px;
+  border: 0.2 solid black;
+  border-radius: 4px;
+  cursor: pointer;
+}

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Registration Form</title>
+  </head>
+  <body>
+    <form id="register" onsubmit="register(event)">
+      <!-- personal informations -->
+      <fieldset>
+        <legend>Personal Information</legend>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="birth_date">Date of Birth:</label>
+        <input type="date" id="birth_date" name="birth_date" required />
+        <p
+          id="dateErrorMessage"
+          style="font-size: 12px; color: red; margin-top: 4px; display: none"
+        >
+          Please enter a valid birth date.
+        </p>
+        <label for="phone">Phone Number:</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          pattern="[0-9]{10}"
+          maxlength="10"
+          placeholder="1234567890"
+          title="Please enter a 10-digit phone number"
+          required
+        />
+
+        <section>
+          <div class="preference">
+            <label for="browsers">Preferences Type:</label>
+            <input list="browsers" name="browsers" id="browser" required />
+            <datalist id="browsers">
+              <option value="student"></option>
+              <option value="professional"></option>
+              <option value="intern"></option>
+            </datalist>
+          </div>
+
+          <div>
+            <label for="areasInterest"
+              >Areas of Interest (select at least 2):</label
+            >
+            <select
+              id="areasInterest"
+              name="areasInterest[]"
+              multiple
+              required
+              title="Hold 'Ctrl' to select multiple options"
+            >
+              <option value="webDev">Web Development</option>
+              <option value="mobileDev">Mobile Development</option>
+              <option value="cloudComputing">Cloud Computing</option>
+              <option value="ai">Artificial Intelligence</option>
+              <option value="machineL">Machine Learning</option>
+            </select>
+            <p
+              id="error-message"
+              style="
+                font-size: 12px;
+                color: red;
+                margin-top: 4px;
+                display: none;
+              "
+            >
+              Please select at least two areas.
+            </p>
+            <p style="font-size: 12px; color: #888; margin-top: 4px">
+              Hold 'Ctrl' to select multiple options
+            </p>
+          </div>
+        </section>
+      </fieldset>
+
+      <!-- Payment -->
+      <fieldset>
+        <legend>Payment Details</legend>
+        <label for="creditCard">Credit Card Number:</label>
+        <input
+          type="text"
+          id="creditCard"
+          name="creditCard"
+          pattern="\d{4} \d{4} \d{4} \d{4}"
+          maxlength="19"
+          oninput="formatCreditCard(event)"
+          placeholder="1234 5678 9123 1234"
+          title="Please enter a 16-digit credit card number"
+          required
+        />
+
+        <label for="cvv">CVV:</label>
+        <input
+          type="text"
+          id="cvv"
+          name="cvv"
+          pattern="\d{3}"
+          maxlength="3"
+          placeholder="123"
+          required
+        />
+
+        <label for="expiryDate">Date of Expiry:</label>
+        <input type="month" id="expiryDate" name="expiryDate" required />
+      </fieldset>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+
+      const selectedArea = document.getElementById("areasInterest");
+      const error = document.getElementById("error-message");
+
+      selectedArea.addEventListener("change", function () {
+        if (selectedArea.selectedOptions.length < 2) {
+          error.style.display = "block";
+        } else {
+          error.style.display = "none";
+        }
+      });
+
+      function isDateValid(dateString) {
+        const currentDate = new Date();
+        const enteredDate = new Date(dateString);
+        return enteredDate <= currentDate;
+      }
+
+      function formatCreditCard(event) {
+        const input = event.target;
+        let value = input.value.replace(/\s/g, "");
+        value = value.replace(/(\d{4})/g, "$1 ");
+        input.value = value.trim();
+      }
+
+      function register(event) {
+        event.preventDefault();
+
+        const birthDate = document.getElementById("birth_date").value;
+        const error = document.getElementById("dateErrorMessage");
+        
+        if (!isDateValid(birthDate)) {
+          error.style.display = "block";
+          return;
+        } else {
+          error.style.display = "none";
+        }
+
+        const formData = new FormData(event.target);
+        const data = {};
+
+        for (const [key, value] of formData.entries()) {
+          data[key] = value;
+        }
+
+        console.log("Form data: ", data);
+      }
+    </script>
+  </body>
+</html>
