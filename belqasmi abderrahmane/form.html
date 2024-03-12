@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+		<div>
+
+			<label for="name">Name: </label>
+			<input type="text" name="name" id="name" pattern="[A-Za-z]{3,}" required placeholder="3 character minimum"
+			oninput="setCustomValidity('')"	
+			oninvalid="setCustomValidity('Enter User Name 3 character long')">
+			
+			<label for="personal-email">Email: </label>
+			<input type="email" name="personal-email" id="personal-email" required>
+		
+			<label for="phone">phone number: </label>
+			<input type="text" name="phone" id="phone" required pattern="^06\d{8}$"
+			oninput="setCustomValidity('')"	
+			oninvalid="setCustomValidity('Set the phone number to 10 numbers and start with 06')">
+
+			<label for="birthDay">Your birthday</label>
+			<input type="date" name="birthDay" id="birthDay" required>
+		</div>
+		<div>
+
+			<label for="preference">Preferences: </label>
+			<input list="preferences" name="preference" id="preference" required>
+			<datalist id="preferences">
+				<option value="student"></option>
+				<option value="proffetional"></option>
+				<option value="intern"></option>
+			</datalist>
+			
+			<label for="interest">Area of interest: </label>
+			<input list="interests" name="interest" id="interest" required>
+			<datalist id="interests">
+				<option value="web"></option>
+				<option value="mobile"></option>
+				<option value="devops"></option>
+				<option value="php"></option>
+				<option value="java"></option>
+			</datalist>
+		</div>
+		<div>
+			<label for="credit" >Credit cards number: </label>
+			<input type="text" name="credit" id="credit" pattern="^\d{4}( \d{4}){3}$" Placeholder="XXXX XXXX XXXX XXXX"
+			oninput="setCustomValidity('')"	
+			oninvalid="setCustomValidity('Set the credit card with numbers by 4 divided by space')" required>
+
+			<label for="ccv">CCV: </label>
+			<input type="text" name="ccv" id="ccv" pattern="\d{3}" required
+			oninput="setCustomValidity('')"	
+			oninvalid="setCustomValidity('Set CCV to the 3 numbers behind our credit card')">
+
+			<label for="expiry">Expiry date: </label>
+			<input type="date" name="expiry" id="expiry" >
+		</div>
+		<input type="submit">
+	</form>
+	<script>
+		const form = document.querySelector('form'); 
+ 
+		form.addEventListener('submit', function(event) { 
+		event.preventDefault(); 
+		let inputs = form.querySelectorAll("input");
+		inputs.forEach(input => console.log(input.value))
+		});
+	</script>
+</body>
+</html>
