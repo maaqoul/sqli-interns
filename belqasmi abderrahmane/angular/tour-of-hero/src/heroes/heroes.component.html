@@ -1,0 +1,19 @@
+<div>
+    <header>
+        <h2>My Heroes</h2>
+    </header>
+    <main>
+        <ul class="hero-container">
+            <li *ngFor="let hero of heros" >
+                <button [routerLink]="['/details/', hero.id]" >
+                    <span class="id">
+                        {{hero.id}}
+                    </span>
+                    <span class="name">
+                        {{hero.name}}
+                    </span>
+                </button>
+            </li>
+        </ul>
+    </main>
+</div>

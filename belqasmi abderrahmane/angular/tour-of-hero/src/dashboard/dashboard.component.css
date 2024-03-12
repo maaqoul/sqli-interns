@@ -1,0 +1,15 @@
+.hero-container {
+    display: flex;
+    gap: 20px;
+}
+
+button {
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: rgb(89, 56, 120);
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    height: 100%;
+}

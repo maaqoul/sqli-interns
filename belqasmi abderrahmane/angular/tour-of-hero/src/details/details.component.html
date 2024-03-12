@@ -1,0 +1,17 @@
+<div>
+    <header>
+        <h2> {{hero.name}} Details</h2>
+    </header>
+    <main>
+        <span>
+            id: {{hero.id}}
+        </span>
+        <div class="input-container">
+            <label for="hero-name">hero name</label>
+            <input type="text" name="hero-name" (keyup)="onKeyEvent($event)" >
+        </div>
+        </main>
+    <footer>
+        <button>Back</button>
+    </footer>
+</div>

@@ -1,0 +1,19 @@
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.input-container {
+    display: flex;
+    gap: 5px;
+}
+
+button{
+    background-color: rgb(184, 205, 210);
+    padding: 20px;
+    border-radius: 20px;
+    border-style: none;
+    cursor: pointer;
+}
