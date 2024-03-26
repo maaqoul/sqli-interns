@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>css grid generator</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta+Mahee:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+        <p>CSS Grid Generator</p>
+    </header>
+    <main>
+        <section class="interactive_input">
+            <div class="container" id="container">
+            </div>
+        </section>
+        <section class="manual_input">
+            <form>
+                <label for="gap">row gap</label>
+                <input type="number" id="rgap" name="gap" min="0"max="50" value="0">
+                <label for="gap">column gap</label>
+                <input type="number" id="cgap" name="gap" min="0"max="50" value="0">
+                <div class="reset" id="resetButton">
+                    <p>reset</p>
+                </div>
+                <div class="generate" id="generate">
+                    <p>generate Code</p>
+                </div>
+            </form> 
+        </section>
+        <section>
+            <div id="popup" class="popup">
+                <div class="popup-content">
+                    <header>
+                        <p class="html" id="html">see html</p>
+                        <p>Your code</p>
+                    </header>
+                    <div class="code" id="code">
+                        <p id="pcode"></p>
+                    </div>
+                    <div class="code2" id="code2">
+                    <p>&lt;div class="parent"&gt;</p>
+                        
+                    </div>
+                    <footer class="codefooter" id="codefooter">
+                        <p>close</p>
+                    </footer>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/script.js" type="module"></script>
+  </body>
+  
+</html>
+

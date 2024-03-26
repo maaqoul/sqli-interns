@@ -1,0 +1,94 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" initial-scale="1.0" />
+    <title>IT confe</title>
+  </head>
+  <body>
+    <h1>get your ticket now for the hugest IT conference in morocco !</h1>
+    <form class="form">
+
+        <h2>fill your personal information :</h2>
+        <label for="name">Full name: </label>
+        <input type="text" name="name" pattern="^(\w\w+)\s(\w+)$" required>
+        <br>
+        <label for="birth">date of birth: </label>
+        <input type="date" name="birth" max="2010-03-06" min="1900-01-01" required>
+        <br>
+         <label for="email">email address: </label>
+        <input type="email" name="email" required>
+        <br>
+        <label>Interests (choose two at least):</label><br>
+        <input type="checkbox" name="interest" id="interest1" value="AI"> <label for="interest1">AI</label><br>
+        <input type="checkbox" name="interest" id="interest2" value="web development"> <label for="interest2">Web Development</label><br>
+        <input type="checkbox" name="interest" id="interest3" value="smart contacts"> <label for="interest3">Smart Contacts</label><br>
+        <input type="checkbox" name="interest" id="interest4" value="cloud"> <label for="interest4">Cloud</label><br>
+        <input type="checkbox" name="interest" id="interest5" value="cybersecurity"> <label for="interest5">Cybersecurity</label><br>
+        <input type="checkbox" name="interest" id="interest6" value="mobile"> <label for="interest6">Mobile</label><br>
+        <br>
+        <label>profession :</label><br>
+        <input type="radio" id="intern" name="profession" value="intern">
+        <label for="intern">intern</label><br>
+        <input type="radio" id="professional" name="profession" value="profesional">
+        <label for="professional">professional</label><br>
+        <input type="radio" id="student" name="profession" value="student">
+        <label for="student">student</label>
+        <br>
+        <h2>payement method :</h2>
+        <label for="card" >card number : </label>
+        <input type="text" name="card" placeholder="1234 1234 1234 1234" pattern="^\d{4} \d{4} \d{4} \d{4}$" required>
+        <br>
+        <label for="CVV">CVV : </label>
+        <input type="number" name="CVV" min="100" max="999" required>
+        <br>
+        <label for="carddate">date of expiry : </label>
+        <input type="text" name="carddate" pattern="^(0[1-9]|1[0-2])\/(\d{2})$" required>
+        <br>
+        <input type="submit" value="Login!">
+    </form>
+  </body>
+</html>
+
+<script>
+
+document.querySelector('.form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    validateInput();
+    printFormData();
+});
+  
+function printFormData() {
+    var formData = new FormData(document.querySelector('.form'));
+    for (var pair of formData.entries()) {
+        console.log(pair[0] + ': ' + pair[1]);
+    }
+    return false; 
+}
+
+
+function validateInput() {
+    var checkboxes = document.querySelectorAll('input[name="interest"]:checked');
+    if (checkboxes.length < 2) {
+      alert('Please select at least two interests.');
+    }
+  }
+
+</script>
+
+
+<!-- name 
+email
+dateof birth
+------------------------------------------------------------------------------------
+preferences:
+type(student, professional, intern ...)
+areas of interest (2 at least) (web dev, mobile dev, cloud computing, ...)
+-------------------------------------------------------------------------------------
+paiement details:
+credit card num
+CVV
+date of expiry
+----------------------------------------------
+submit(console.log / error messages) -->
